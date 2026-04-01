@@ -1,173 +1,330 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Dev Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#0f172a',
-                        lightBg: '#f8fafc',
-                        accent: '#f97316' // Яркий оранжевый акцент
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
-        
-        /* Стили для карточек Bento */
-        .bento-card {
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .bento-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* Скрываем стандартный скроллбар, делаем его стильным */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ktoto — Веб-разработчик</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
-<body class="bg-lightBg text-slate-900 dark:bg-darkBg dark:text-slate-50 min-h-screen flex flex-col">
+<body>
 
-    <header class="p-6 flex justify-between items-center max-w-6xl mx-auto w-full">
-        <div class="text-2xl font-extrabold tracking-tighter">/dev</div>
-        <button id="themeToggle" class="p-3 rounded-full bg-slate-200 dark:bg-slate-800 hover:scale-110 transition-transform shadow-sm">
-            <span id="themeIcon" class="text-xl">☀️</span>
-        </button>
-    </header>
+  <!-- Custom cursor (desktop) -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-    <main class="flex-grow max-w-6xl mx-auto w-full px-6 py-12 flex flex-col gap-12">
-        
-        <section class="hero-section flex flex-col items-start gap-6 pt-10 pb-16">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
-                Делаю сайты,<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-500">которые работают.</span><br>
-                Точка.
-            </h1>
-            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mt-4">
-                Современный фронтенд, чистый код и адаптивный дизайн. Переношу идеи в браузер без шаблонов и костылей.
-            </p>
-            <a href="https://t.me/ktoto13000" target="_blank" class="mt-6 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl hover:scale-105 transition-transform shadow-xl">
-                Обсудить проект
-            </a>
-        </section>
+  <!-- ─── NAV ──────────────────────────────────── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">kt<span>.</span>dev</a>
+    <div class="nav-right">
+      <div class="avail-badge" id="availBadge">
+        <span class="avail-dot"></span> Доступен для проектов
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <span class="theme-icon moon">🌙</span>
+        <span class="theme-icon sun">☀️</span>
+      </button>
+    </div>
+  </nav>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 bento-grid">
-            
-            <div class="bento-card col-span-1 md:col-span-2 bg-white dark:bg-slate-800/50 p-8 rounded-[32px] border border-slate-200 dark:border-slate-700/50 shadow-sm">
-                <h3 class="text-3xl font-bold mb-6">Что я делаю</h3>
-                <div class="flex flex-col gap-4">
-                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
-                        <h4 class="font-bold text-xl">Лендинги</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Быстрые, сочные, с вау-эффектом для продаж.</p>
-                    </div>
-                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
-                        <h4 class="font-bold text-xl">Многостраничные сайты</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Продуманная структура для бизнеса или личных проектов.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- ─── HERO ─────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-blob blob1"></div>
+    <div class="hero-bg-blob blob2"></div>
 
-            <div class="bento-card col-span-1 bg-gradient-to-br from-accent to-orange-400 text-white p-8 rounded-[32px] shadow-lg shadow-orange-500/20 flex flex-col justify-between">
-                <h3 class="text-3xl font-bold mb-4">Стек</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-2 bg-white/20 rounded-xl text-sm font-semibold backdrop-blur-sm">HTML5</span>
-                    <span class="px-4 py-2 bg-white/20 rounded-xl text-sm font-semibold backdrop-blur-sm">CSS3</span>
-                    <span class="px-4 py-2 bg-white/20 rounded-xl text-sm font-semibold backdrop-blur-sm">JS (ES6+)</span>
-                    <span class="px-4 py-2 bg-white/20 rounded-xl text-sm font-semibold backdrop-blur-sm">Tailwind</span>
-                    <span class="px-4 py-2 bg-white/20 rounded-xl text-sm font-semibold backdrop-blur-sm">GSAP</span>
-                </div>
-            </div>
+    <div class="hero-label" id="heroLabel">Веб-разработчик · Фронтенд</div>
 
-            <div class="bento-card col-span-1 bg-white dark:bg-slate-800/50 p-8 rounded-[32px] border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col items-center justify-center text-center">
-                <div class="text-6xl mb-4">📱</div>
-                <h4 class="font-bold text-xl">Адаптивность</h4>
-                <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">Код, который идеально выглядит на любых экранах.</p>
-            </div>
+    <h1 class="hero-title" id="heroTitle">
+      Делаю сайты,<br>
+      которые<br>
+      <span class="accent">работают</span><span class="dot">.</span><br>
+      Точка<span class="dot">.</span>
+    </h1>
 
-            <div class="bento-card col-span-1 md:col-span-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 p-8 rounded-[32px] shadow-sm flex flex-col justify-center relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 text-[150px] opacity-10">⚡</div>
-                <h3 class="text-3xl font-bold mb-2">Производительность</h3>
-                <p class="text-slate-400 dark:text-slate-500 max-w-md">Молниеносная загрузка. Оптимизация под Google PageSpeed.</p>
-            </div>
-            
-        </section>
-    </main>
+    <p class="hero-sub" id="heroSub">
+      Превращаю идеи в быстрые, красивые и конверсионные продукты.
+      Без лишнего — только то, что приносит результат.
+    </p>
 
-    <footer class="mt-auto py-16 border-t border-slate-200 dark:border-slate-800/50 bg-slate-50 dark:bg-slate-900/50">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center text-center gap-4">
-            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Есть идея?</h2>
-            <p class="text-xl text-slate-500 dark:text-slate-400 mb-4">Я готов к работе над новыми проектами.</p>
-            <a href="https://t.me/ktoto13000" target="_blank" class="text-3xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-500 hover:opacity-80 transition-opacity">
-                @ktoto13000
-            </a>
+    <div class="hero-actions" id="heroActions">
+      <a href="https://t.me/ktoto13000" target="_blank" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+        </svg>
+        Обсудить проект
+      </a>
+      <a href="#services" class="btn-ghost">
+        Посмотреть работы
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m7 17 10-10"/><path d="M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>скролл</span>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES & SKILLS (BENTO) ────────────── -->
+  <section id="services" style="padding-top: 60px;">
+    <div class="section-label">Услуги и навыки</div>
+    <h2 class="section-title">Что умею<br>и что делаю</h2>
+
+    <div class="bento" id="bentoGrid">
+
+      <!-- Лендинги — большая карточка -->
+      <div class="card card-big" data-parallax>
+        <div class="card-accent-strip"></div>
+        <span class="card-icon">🚀</span>
+        <div class="card-title">Лендинги<br>& Промо-сайты</div>
+        <div class="card-desc" style="margin-top: 12px;">
+          Конверсионные страницы с продуманной анимацией и UX.
+          Не просто «красиво» — а так, чтобы человек остался и нажал кнопку.
         </div>
-    </footer>
+        <div class="skill-tags" style="position: absolute; bottom: 28px; left: 28px; right: 28px;">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">GSAP</span>
+          <span class="skill-tag">Tailwind</span>
+        </div>
+      </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <script>
-        // 1. Логика переключения Темной/Светлой темы
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const htmlElement = document.documentElement;
+      <!-- Статистика: проекты -->
+      <div class="card card-stat" data-parallax>
+        <div class="card-desc card-stat-label">Завершённых проектов</div>
+        <div class="big-number">40+</div>
+        <div class="card-desc">И каждый — с нуля, без шаблонов.</div>
+      </div>
 
-        // Проверяем систему или локальное хранилище
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.add('dark');
-            themeIcon.textContent = '☀️';
-        } else {
-            htmlElement.classList.remove('dark');
-            themeIcon.textContent = '🌙';
-        }
+      <!-- Сложный фронтенд — оранжевая -->
+      <div class="card card-orange" data-parallax>
+        <span class="card-icon" style="filter: none;">⚡</span>
+        <div class="card-title">Сложный<br>Фронтенд</div>
+        <div class="card-desc" style="margin-top: 10px;">
+          SPA, интерактивные дашборды, кастомные компоненты.
+          Там, где другие говорят «сложно» — для меня это повседневная задача.
+        </div>
+      </div>
 
-        themeToggle.addEventListener('click', () => {
-            htmlElement.classList.toggle('dark');
-            if (htmlElement.classList.contains('dark')) {
-                localStorage.setItem('theme', 'dark');
-                themeIcon.textContent = '☀️';
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeIcon.textContent = '🌙';
-            }
+      <!-- JavaScript -->
+      <div class="card" data-parallax>
+        <span class="card-icon">☕</span>
+        <div class="card-title">JavaScript</div>
+        <div class="card-desc">Ванильный JS и современные возможности ES2024. Никаких лишних зависимостей там, где они не нужны.</div>
+      </div>
+
+      <!-- React & Vue + UI/UX — широкая -->
+      <div class="card card-wide" data-parallax>
+        <div class="card-dual">
+          <div>
+            <span class="card-icon">⚛️</span>
+            <div class="card-title">React & Vue</div>
+            <div class="card-desc">Компонентный подход, состояние, хуки. Строю интерфейсы, которые не тормозят и не ломаются.</div>
+          </div>
+          <div>
+            <span class="card-icon">🎨</span>
+            <div class="card-title">UI/UX Дизайн</div>
+            <div class="card-desc">Figma → Код без потерь. Пиксельная точность — не слова, а привычка.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HTML & CSS -->
+      <div class="card" data-parallax>
+        <span class="card-icon">🏗️</span>
+        <div class="card-title">HTML & CSS</div>
+        <div class="card-desc">Семантика, доступность, адаптивность. Основа, которая держит всё остальное.</div>
+      </div>
+
+      <!-- Tailwind -->
+      <div class="card" data-parallax>
+        <div class="card-accent-strip"></div>
+        <span class="card-icon">💨</span>
+        <div class="card-title">Tailwind CSS</div>
+        <div class="card-desc">Utility-first без боли. Кастомные конфиги, нестандартные токены — результат виден сразу.</div>
+      </div>
+
+      <!-- Статистика: скорость -->
+      <div class="card card-stat" data-parallax>
+        <div class="card-desc card-stat-label">Скорость сдачи</div>
+        <div class="big-number">3–7<br><span style="font-size: 1.5rem; color: var(--muted);">дней</span></div>
+        <div class="card-desc">Без «завтра сделаю».</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── PROCESS ───────────────────────────────── -->
+  <section id="process">
+    <div class="section-label">Как работаю</div>
+    <h2 class="section-title">Процесс,<br>без воды</h2>
+
+    <div class="process-grid" id="processGrid">
+      <div class="process-card reveal-card">
+        <div class="process-num">01</div>
+        <div class="process-step-title">Разбираемся в задаче</div>
+        <div class="process-desc">Никаких длинных брифов на 5 страниц. Пишешь в телеграм, объясняешь идею — я задаю конкретные вопросы и понимаю суть за 15 минут.</div>
+      </div>
+      <div class="process-card reveal-card">
+        <div class="process-num">02</div>
+        <div class="process-step-title">Прототип → Дизайн</div>
+        <div class="process-desc">Показываю структуру ещё до написания кода. Лучше поправить блок на макете, чем переверстывать готовую страницу.</div>
+      </div>
+      <div class="process-card reveal-card">
+        <div class="process-num">03</div>
+        <div class="process-step-title">Разработка</div>
+        <div class="process-desc">Чистый код, адаптив с первого пикселя, оптимизация скорости. Никакого «это на потом».</div>
+      </div>
+      <div class="process-card reveal-card">
+        <div class="process-num">04</div>
+        <div class="process-step-title">Сдача и поддержка</div>
+        <div class="process-desc">Отдаю результат, объясняю что и как. Остаюсь на связи после запуска — мелкие правки по делу не считаю за деньги.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ───────────────────────────────────── -->
+  <div class="cta-section reveal-card" id="ctaSection">
+    <h2 class="cta-title">Есть идея?<br><span>Давай обсудим.</span></h2>
+    <p class="cta-sub">Ответ в течение нескольких часов. Без «ой, я занят, подождите».</p>
+    <a href="https://t.me/ktoto13000" target="_blank" class="cta-tg">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/>
+      </svg>
+      Написать @ktoto13000
+    </a>
+  </div>
+
+  <!-- ─── FOOTER ─────────────────────────────────── -->
+  <footer>
+    <span class="footer-copy">© 2025 ktoto.dev — сделано с умом</span>
+    <a href="https://t.me/ktoto13000" target="_blank" class="footer-tg">
+      <span>@</span>ktoto13000
+    </a>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ─── Theme toggle
+    const html = document.documentElement;
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    });
+
+    // ─── Availability badge fade-in
+    setTimeout(() => {
+      const badge = document.getElementById('availBadge');
+      badge.style.display = 'inline-flex';
+      gsap.from(badge, { opacity: 0, x: 20, duration: 0.5, ease: 'power2.out' });
+    }, 1800);
+
+    // ─── Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      gsap.to(cursor, { x: mx - 5, y: my - 5, duration: 0.1, ease: 'none' });
+    });
+
+    (function animRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      gsap.set(ring, { x: rx - 19, y: ry - 19 });
+      requestAnimationFrame(animRing);
+    })();
+
+    document.querySelectorAll('a, button, .card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        gsap.to(cursor, { scale: 2.5, duration: 0.3 });
+        gsap.to(ring,   { scale: 1.5, opacity: 0.8, duration: 0.3 });
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(cursor, { scale: 1, duration: 0.3 });
+        gsap.to(ring,   { scale: 1, opacity: 0.5, duration: 0.3 });
+      });
+    });
+
+    // ─── Hero entrance
+    gsap.timeline({ delay: 0.2 })
+      .from('#heroLabel',   { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out' })
+      .from('#heroTitle',   { opacity: 0, y: 60, duration: 1,   ease: 'power4.out', skewY: 3 }, '-=0.3')
+      .from('#heroSub',     { opacity: 0, y: 30, duration: 0.7, ease: 'power2.out' }, '-=0.5')
+      .from('#heroActions', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.4');
+
+    // ─── Bento scale reveal
+    gsap.utils.toArray('#bentoGrid .card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
+        opacity: 0, scale: 0.88, y: 30,
+        duration: 0.7, delay: i * 0.06, ease: 'power3.out'
+      });
+    });
+
+    // ─── Process / CTA reveal
+    gsap.utils.toArray('.reveal-card').forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+        opacity: 0, y: 50, scale: 0.95,
+        duration: 0.8, delay: i * 0.08, ease: 'power3.out'
+      });
+    });
+
+    // ─── Section titles
+    gsap.utils.toArray('.section-title').forEach(title => {
+      gsap.from(title, {
+        scrollTrigger: { trigger: title, start: 'top 90%' },
+        opacity: 0, y: 40, duration: 0.9, ease: 'power3.out'
+      });
+    });
+
+    // ─── Mouse parallax on bento cards
+    const parallaxCards = document.querySelectorAll('[data-parallax]');
+
+    document.addEventListener('mousemove', e => {
+      const dx = (e.clientX - window.innerWidth  / 2) / (window.innerWidth  / 2);
+      const dy = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+
+      parallaxCards.forEach((card, i) => {
+        const rect   = card.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) return;
+        const depth = 0.5 + (i % 3) * 0.3;
+        gsap.to(card, {
+          x: dx * 8 * depth, y: dy * 5 * depth,
+          rotateX: -dy * 2,  rotateY: dx * 2,
+          duration: 0.8, ease: 'power2.out', transformPerspective: 800
         });
+      });
+    });
 
-        // 2. Анимации GSAP
-        gsap.registerPlugin(ScrollTrigger);
+    document.addEventListener('mouseleave', () => {
+      parallaxCards.forEach(card => {
+        gsap.to(card, { x: 0, y: 0, rotateX: 0, rotateY: 0, duration: 1.2, ease: 'elastic.out(1,0.5)' });
+      });
+    });
 
-        // Плавное появление главного экрана
-        gsap.from(".hero-section h1", { y: 50, opacity: 0, duration: 1, ease: "power3.out" });
-        gsap.from(".hero-section p", { y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out" });
-        gsap.from(".hero-section a", { scale: 0.8, opacity: 0, duration: 0.5, delay: 0.5, ease: "back.out(1.7)" });
+    // ─── Nav shadow on scroll
+    ScrollTrigger.create({
+      start: 'top -80',
+      onUpdate: self => {
+        document.getElementById('navbar').style.boxShadow =
+          self.progress > 0 ? '0 8px 32px rgba(0,0,0,0.18)' : 'none';
+      }
+    });
+  </script>
 
-        // Появление карточек Bento при скролле с эффектом Scale
-        gsap.from(".bento-card", {
-            scrollTrigger: {
-                trigger: ".bento-grid",
-                start: "top 85%", // Начинаем, когда верх сетки достигает 85% экрана
-            },
-            y: 50,
-            scale: 0.9,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1, // Карточки выплывают друг за другом
-            ease: "back.out(1.2)"
-        });
-    </script>
 </body>
 </html>
