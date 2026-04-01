@@ -4,38 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ktoto — Веб-разработчик</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="style.css" />
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-  <!-- Custom cursor (desktop) -->
-  <div class="cursor" id="cursor"></div>
+  <!-- theme flash -->
+  <div class="theme-flash" id="themeFlash"></div>
+
+  <!-- cursor -->
+  <div class="cursor"     id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- ─── NAV ──────────────────────────────────── -->
+  <!-- ── NAV ── -->
   <nav id="navbar">
     <a href="#" class="nav-logo">kt<span>.</span>dev</a>
     <div class="nav-right">
       <div class="avail-badge" id="availBadge">
         <span class="avail-dot"></span> Доступен для проектов
       </div>
+
+      <!-- THEME TOGGLE -->
       <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
-        <span class="theme-icon moon">🌙</span>
-        <span class="theme-icon sun">☀️</span>
+        <div class="toggle-knob">
+          <span class="icon-moon">🌙</span>
+          <span class="icon-sun">☀️</span>
+        </div>
       </button>
     </div>
   </nav>
 
-  <!-- ─── HERO ─────────────────────────────────── -->
+  <!-- ── HERO ── -->
   <section class="hero" id="hero">
     <div class="hero-bg-blob blob1"></div>
     <div class="hero-bg-blob blob2"></div>
@@ -75,23 +79,22 @@
     </div>
   </section>
 
-  <!-- ─── SERVICES & SKILLS (BENTO) ────────────── -->
-  <section id="services" style="padding-top: 60px;">
+  <!-- ── BENTO ── -->
+  <section id="services" style="padding-top:60px;">
     <div class="section-label">Услуги и навыки</div>
     <h2 class="section-title">Что умею<br>и что делаю</h2>
 
     <div class="bento" id="bentoGrid">
 
-      <!-- Лендинги — большая карточка -->
       <div class="card card-big" data-parallax>
         <div class="card-accent-strip"></div>
         <span class="card-icon">🚀</span>
         <div class="card-title">Лендинги<br>& Промо-сайты</div>
-        <div class="card-desc" style="margin-top: 12px;">
+        <div class="card-desc" style="margin-top:12px;">
           Конверсионные страницы с продуманной анимацией и UX.
           Не просто «красиво» — а так, чтобы человек остался и нажал кнопку.
         </div>
-        <div class="skill-tags" style="position: absolute; bottom: 28px; left: 28px; right: 28px;">
+        <div class="skill-tags" style="position:absolute;bottom:28px;left:28px;right:28px;">
           <span class="skill-tag">HTML</span>
           <span class="skill-tag">CSS</span>
           <span class="skill-tag">GSAP</span>
@@ -99,72 +102,65 @@
         </div>
       </div>
 
-      <!-- Статистика: проекты -->
       <div class="card card-stat" data-parallax>
         <div class="card-desc card-stat-label">Завершённых проектов</div>
-        <div class="big-number">40+</div>
+        <div class="big-number" data-count="40">0</div>
         <div class="card-desc">И каждый — с нуля, без шаблонов.</div>
       </div>
 
-      <!-- Сложный фронтенд — оранжевая -->
       <div class="card card-orange" data-parallax>
-        <span class="card-icon" style="filter: none;">⚡</span>
+        <span class="card-icon" style="filter:none;">⚡</span>
         <div class="card-title">Сложный<br>Фронтенд</div>
-        <div class="card-desc" style="margin-top: 10px;">
+        <div class="card-desc" style="margin-top:10px;">
           SPA, интерактивные дашборды, кастомные компоненты.
-          Там, где другие говорят «сложно» — для меня это повседневная задача.
+          Там, где другие говорят «сложно» — для меня повседневная задача.
         </div>
       </div>
 
-      <!-- JavaScript -->
       <div class="card" data-parallax>
         <span class="card-icon">☕</span>
         <div class="card-title">JavaScript</div>
-        <div class="card-desc">Ванильный JS и современные возможности ES2024. Никаких лишних зависимостей там, где они не нужны.</div>
+        <div class="card-desc">Ванильный JS и возможности ES2024. Никаких лишних зависимостей там, где они не нужны.</div>
       </div>
 
-      <!-- React & Vue + UI/UX — широкая -->
       <div class="card card-wide" data-parallax>
         <div class="card-dual">
           <div>
             <span class="card-icon">⚛️</span>
             <div class="card-title">React & Vue</div>
-            <div class="card-desc">Компонентный подход, состояние, хуки. Строю интерфейсы, которые не тормозят и не ломаются.</div>
+            <div class="card-desc">Компонентный подход, состояние, хуки. Строю интерфейсы, которые не тормозят.</div>
           </div>
           <div>
             <span class="card-icon">🎨</span>
             <div class="card-title">UI/UX Дизайн</div>
-            <div class="card-desc">Figma → Код без потерь. Пиксельная точность — не слова, а привычка.</div>
+            <div class="card-desc">Figma → Код без потерь. Пиксельная точность — привычка, не слова.</div>
           </div>
         </div>
       </div>
 
-      <!-- HTML & CSS -->
       <div class="card" data-parallax>
         <span class="card-icon">🏗️</span>
         <div class="card-title">HTML & CSS</div>
-        <div class="card-desc">Семантика, доступность, адаптивность. Основа, которая держит всё остальное.</div>
+        <div class="card-desc">Семантика, доступность, адаптивность. Основа, которая держит всё.</div>
       </div>
 
-      <!-- Tailwind -->
       <div class="card" data-parallax>
         <div class="card-accent-strip"></div>
         <span class="card-icon">💨</span>
         <div class="card-title">Tailwind CSS</div>
-        <div class="card-desc">Utility-first без боли. Кастомные конфиги, нестандартные токены — результат виден сразу.</div>
+        <div class="card-desc">Utility-first без боли. Кастомные токены — результат виден сразу.</div>
       </div>
 
-      <!-- Статистика: скорость -->
       <div class="card card-stat" data-parallax>
         <div class="card-desc card-stat-label">Скорость сдачи</div>
-        <div class="big-number">3–7<br><span style="font-size: 1.5rem; color: var(--muted);">дней</span></div>
+        <div class="big-number">3–7<br><span style="font-size:1.5rem;color:var(--muted);">дней</span></div>
         <div class="card-desc">Без «завтра сделаю».</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ─── PROCESS ───────────────────────────────── -->
+  <!-- ── PROCESS ── -->
   <section id="process">
     <div class="section-label">Как работаю</div>
     <h2 class="section-title">Процесс,<br>без воды</h2>
@@ -188,12 +184,12 @@
       <div class="process-card reveal-card">
         <div class="process-num">04</div>
         <div class="process-step-title">Сдача и поддержка</div>
-        <div class="process-desc">Отдаю результат, объясняю что и как. Остаюсь на связи после запуска — мелкие правки по делу не считаю за деньги.</div>
+        <div class="process-desc">Отдаю результат, объясняю что и как. Остаюсь на связи после запуска — мелкие правки не считаю за деньги.</div>
       </div>
     </div>
   </section>
 
-  <!-- ─── CTA ───────────────────────────────────── -->
+  <!-- ── CTA ── -->
   <div class="cta-section reveal-card" id="ctaSection">
     <h2 class="cta-title">Есть идея?<br><span>Давай обсудим.</span></h2>
     <p class="cta-sub">Ответ в течение нескольких часов. Без «ой, я занят, подождите».</p>
@@ -205,7 +201,7 @@
     </a>
   </div>
 
-  <!-- ─── FOOTER ─────────────────────────────────── -->
+  <!-- ── FOOTER ── -->
   <footer>
     <span class="footer-copy">© 2025 ktoto.dev — сделано с умом</span>
     <a href="https://t.me/ktoto13000" target="_blank" class="footer-tg">
@@ -213,118 +209,210 @@
     </a>
   </footer>
 
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
+<script>
+gsap.registerPlugin(ScrollTrigger);
 
-    // ─── Theme toggle
-    const html = document.documentElement;
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    });
+/* ─── THEME TOGGLE (главный герой) ─── */
+const html       = document.documentElement;
+const toggleBtn  = document.getElementById('themeToggle');
+const flash      = document.getElementById('themeFlash');
 
-    // ─── Availability badge fade-in
-    setTimeout(() => {
-      const badge = document.getElementById('availBadge');
-      badge.style.display = 'inline-flex';
-      gsap.from(badge, { opacity: 0, x: 20, duration: 0.5, ease: 'power2.out' });
-    }, 1800);
+toggleBtn.addEventListener('click', e => {
+  const rect    = toggleBtn.getBoundingClientRect();
+  const cx      = rect.left + rect.width  / 2;
+  const cy      = rect.top  + rect.height / 2;
+  const isDark  = html.dataset.theme === 'dark';
+  const nextTheme = isDark ? 'light' : 'dark';
 
-    // ─── Custom cursor
-    const cursor = document.getElementById('cursor');
-    const ring   = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
+  /* --- knob animation vars --- */
+  const knob = toggleBtn.querySelector('.toggle-knob');
+  toggleBtn.style.setProperty('--kx', isDark ? '30px' : '0px');
 
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      gsap.to(cursor, { x: mx - 5, y: my - 5, duration: 0.1, ease: 'none' });
-    });
+  /* burst class for CSS knob spin */
+  toggleBtn.classList.add('switching');
+  setTimeout(() => toggleBtn.classList.remove('switching'), 600);
 
-    (function animRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      gsap.set(ring, { x: rx - 19, y: ry - 19 });
-      requestAnimationFrame(animRing);
-    })();
+  /* ripple */
+  const rip = document.createElement('div');
+  rip.className = 'toggle-ripple';
+  toggleBtn.appendChild(rip);
+  setTimeout(() => rip.remove(), 650);
 
-    document.querySelectorAll('a, button, .card').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        gsap.to(cursor, { scale: 2.5, duration: 0.3 });
-        gsap.to(ring,   { scale: 1.5, opacity: 0.8, duration: 0.3 });
+  /* sparks (6 particles) */
+  const angles = [0, 60, 120, 180, 240, 300];
+  angles.forEach(deg => {
+    const rad = deg * Math.PI / 180;
+    const dist = 28 + Math.random() * 14;
+    const spark = document.createElement('div');
+    spark.className = 'toggle-spark';
+    spark.style.setProperty('--sx', `${Math.cos(rad) * dist}px`);
+    spark.style.setProperty('--sy', `${Math.sin(rad) * dist}px`);
+    toggleBtn.appendChild(spark);
+    setTimeout(() => spark.remove(), 600);
+  });
+
+  /* page-wide flash */
+  flash.style.setProperty('--fx', `${(cx / window.innerWidth  * 100).toFixed(1)}%`);
+  flash.style.setProperty('--fy', `${(cy / window.innerHeight * 100).toFixed(1)}%`);
+  flash.classList.remove('pop');
+  void flash.offsetWidth;          /* reflow to restart */
+  flash.classList.add('pop');
+  setTimeout(() => flash.classList.remove('pop'), 700);
+
+  /* apply theme with slight delay so flash leads */
+  setTimeout(() => { html.dataset.theme = nextTheme; }, 60);
+
+  /* GSAP page shake */
+  gsap.to('body', {
+    x: isDark ? 4 : -4, duration: 0.08, yoyo: true, repeat: 3,
+    ease: 'power1.inOut',
+    onComplete: () => gsap.set('body', { x: 0 })
+  });
+});
+
+/* ─── AVAILABILITY BADGE ─── */
+setTimeout(() => {
+  const badge = document.getElementById('availBadge');
+  badge.style.display = 'inline-flex';
+  gsap.from(badge, { opacity: 0, x: 24, duration: 0.55, ease: 'power2.out' });
+}, 1800);
+
+/* ─── CUSTOM CURSOR ─── */
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  gsap.to(cursor, { x: mx - 5, y: my - 5, duration: 0.08, ease: 'none' });
+});
+(function loop() {
+  rx += (mx - rx) * 0.11;
+  ry += (my - ry) * 0.11;
+  gsap.set(ring, { x: rx - 19, y: ry - 19 });
+  requestAnimationFrame(loop);
+})();
+
+document.querySelectorAll('a,button,.card,.skill-tag,.process-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    gsap.to(cursor, { scale: 2.5, duration: 0.3 });
+    gsap.to(ring,   { scale: 1.5, opacity: 0.8, duration: 0.3 });
+  });
+  el.addEventListener('mouseleave', () => {
+    gsap.to(cursor, { scale: 1, duration: 0.3 });
+    gsap.to(ring,   { scale: 1, opacity: 0.5, duration: 0.3 });
+  });
+});
+
+/* ─── HERO ENTRANCE ─── */
+gsap.timeline({ delay: 0.25 })
+  .from('#heroLabel',   { opacity: 0, y: 28, duration: 0.7,  ease: 'power3.out' })
+  .from('#heroTitle',   { opacity: 0, y: 70, duration: 1.05, ease: 'power4.out', skewY: 3 }, '-=0.3')
+  .from('#heroSub',     { opacity: 0, y: 32, duration: 0.75, ease: 'power2.out' }, '-=0.5')
+  .from('#heroActions > *', {
+    opacity: 0, y: 22, duration: 0.6, ease: 'power2.out',
+    stagger: 0.12
+  }, '-=0.4')
+  .from('.hero-scroll-hint', { opacity: 0, y: 12, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+
+/* ─── BENTO SCALE REVEAL ─── */
+gsap.utils.toArray('#bentoGrid .card').forEach((card, i) => {
+  gsap.from(card, {
+    scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
+    opacity: 0, scale: 0.86, y: 32,
+    duration: 0.72, delay: i * 0.055, ease: 'power3.out'
+  });
+});
+
+/* ─── PROCESS / CTA REVEAL ─── */
+gsap.utils.toArray('.reveal-card').forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+    opacity: 0, y: 52, scale: 0.94,
+    duration: 0.82, delay: i * 0.09, ease: 'power3.out'
+  });
+});
+
+/* ─── SECTION TITLES ─── */
+gsap.utils.toArray('.section-title').forEach(title => {
+  gsap.from(title, {
+    scrollTrigger: { trigger: title, start: 'top 90%' },
+    opacity: 0, y: 42, duration: 0.9, ease: 'power3.out'
+  });
+});
+
+/* ─── SECTION LABELS ─── */
+gsap.utils.toArray('.section-label').forEach(label => {
+  gsap.from(label, {
+    scrollTrigger: { trigger: label, start: 'top 92%' },
+    opacity: 0, x: -20, duration: 0.6, ease: 'power2.out'
+  });
+});
+
+/* ─── COUNT-UP NUMBERS ─── */
+document.querySelectorAll('[data-count]').forEach(el => {
+  const target = parseInt(el.dataset.count, 10);
+  ScrollTrigger.create({
+    trigger: el, start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.to({ val: 0 }, {
+        val: target, duration: 1.4, ease: 'power2.out',
+        onUpdate() { el.textContent = Math.round(this.targets()[0].val) + '+'; }
       });
-      el.addEventListener('mouseleave', () => {
-        gsap.to(cursor, { scale: 1, duration: 0.3 });
-        gsap.to(ring,   { scale: 1, opacity: 0.5, duration: 0.3 });
-      });
+    }
+  });
+});
+
+/* ─── MOUSE PARALLAX (bento) ─── */
+const parallaxCards = document.querySelectorAll('[data-parallax]');
+document.addEventListener('mousemove', e => {
+  const dx = (e.clientX - window.innerWidth  / 2) / (window.innerWidth  / 2);
+  const dy = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+  parallaxCards.forEach((card, i) => {
+    const rect   = card.getBoundingClientRect();
+    if (rect.top > window.innerHeight || rect.bottom < 0) return;
+    const d = 0.5 + (i % 3) * 0.3;
+    gsap.to(card, {
+      x: dx * 9 * d, y: dy * 6 * d,
+      rotateX: -dy * 2.5, rotateY: dx * 2.5,
+      duration: 0.85, ease: 'power2.out', transformPerspective: 900
     });
+  });
+});
+document.addEventListener('mouseleave', () => {
+  parallaxCards.forEach(card =>
+    gsap.to(card, { x:0,y:0,rotateX:0,rotateY:0, duration:1.3, ease:'elastic.out(1,0.5)' })
+  );
+});
 
-    // ─── Hero entrance
-    gsap.timeline({ delay: 0.2 })
-      .from('#heroLabel',   { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out' })
-      .from('#heroTitle',   { opacity: 0, y: 60, duration: 1,   ease: 'power4.out', skewY: 3 }, '-=0.3')
-      .from('#heroSub',     { opacity: 0, y: 30, duration: 0.7, ease: 'power2.out' }, '-=0.5')
-      .from('#heroActions', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.4');
+/* ─── MAGNETIC BUTTONS ─── */
+document.querySelectorAll('.btn-primary, .cta-tg').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r  = btn.getBoundingClientRect();
+    const ox = (e.clientX - r.left - r.width  / 2) * 0.3;
+    const oy = (e.clientY - r.top  - r.height / 2) * 0.3;
+    gsap.to(btn, { x: ox, y: oy, duration: 0.4, ease: 'power2.out' });
+  });
+  btn.addEventListener('mouseleave', () => {
+    gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1,0.5)' });
+  });
+});
 
-    // ─── Bento scale reveal
-    gsap.utils.toArray('#bentoGrid .card').forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
-        opacity: 0, scale: 0.88, y: 30,
-        duration: 0.7, delay: i * 0.06, ease: 'power3.out'
-      });
-    });
+/* ─── NAV SHADOW ON SCROLL ─── */
+ScrollTrigger.create({
+  start: 'top -60',
+  onUpdate: s => {
+    document.getElementById('navbar').style.boxShadow =
+      s.progress > 0 ? '0 8px 32px rgba(0,0,0,0.18)' : 'none';
+  }
+});
 
-    // ─── Process / CTA reveal
-    gsap.utils.toArray('.reveal-card').forEach((el, i) => {
-      gsap.from(el, {
-        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-        opacity: 0, y: 50, scale: 0.95,
-        duration: 0.8, delay: i * 0.08, ease: 'power3.out'
-      });
-    });
-
-    // ─── Section titles
-    gsap.utils.toArray('.section-title').forEach(title => {
-      gsap.from(title, {
-        scrollTrigger: { trigger: title, start: 'top 90%' },
-        opacity: 0, y: 40, duration: 0.9, ease: 'power3.out'
-      });
-    });
-
-    // ─── Mouse parallax on bento cards
-    const parallaxCards = document.querySelectorAll('[data-parallax]');
-
-    document.addEventListener('mousemove', e => {
-      const dx = (e.clientX - window.innerWidth  / 2) / (window.innerWidth  / 2);
-      const dy = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-
-      parallaxCards.forEach((card, i) => {
-        const rect   = card.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight && rect.bottom > 0;
-        if (!inView) return;
-        const depth = 0.5 + (i % 3) * 0.3;
-        gsap.to(card, {
-          x: dx * 8 * depth, y: dy * 5 * depth,
-          rotateX: -dy * 2,  rotateY: dx * 2,
-          duration: 0.8, ease: 'power2.out', transformPerspective: 800
-        });
-      });
-    });
-
-    document.addEventListener('mouseleave', () => {
-      parallaxCards.forEach(card => {
-        gsap.to(card, { x: 0, y: 0, rotateX: 0, rotateY: 0, duration: 1.2, ease: 'elastic.out(1,0.5)' });
-      });
-    });
-
-    // ─── Nav shadow on scroll
-    ScrollTrigger.create({
-      start: 'top -80',
-      onUpdate: self => {
-        document.getElementById('navbar').style.boxShadow =
-          self.progress > 0 ? '0 8px 32px rgba(0,0,0,0.18)' : 'none';
-      }
-    });
-  </script>
-
+/* ─── FOOTER REVEAL ─── */
+gsap.from('footer > *', {
+  scrollTrigger: { trigger: 'footer', start: 'top 95%' },
+  opacity: 0, y: 20, duration: 0.6, stagger: 0.15, ease: 'power2.out'
+});
+</script>
 </body>
 </html>
