@@ -66,7 +66,7 @@
         </svg>
         Обсудить проект
       </a>
-      <a href="#services" class="btn-ghost" data-testid="cta-works">
+      <a href="#works" class="btn-ghost" data-testid="cta-works">
         Посмотреть работы
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="m7 17 10-10"/><path d="M7 7h10v10"/>
@@ -250,7 +250,7 @@
     <div class="works-grid" id="worksGrid">
       <a href="#" class="work-item reveal-card" data-testid="work-1">
         <div class="work-img">
-          <img src="https://images.unsplash.com/photo-1685018710168-1a38aae69890?w=800&q=80" alt="Лендинг" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1634084462412-b54873c0a56d?w=800&q=80" alt="Лендинг" loading="lazy" />
         </div>
         <div class="work-info">
           <div class="work-title">Лендинг для стартапа</div>
@@ -261,7 +261,7 @@
       </a>
       <a href="#" class="work-item reveal-card" data-testid="work-2">
         <div class="work-img">
-          <img src="https://images.unsplash.com/photo-1664748512003-8820b08d8161?w=800&q=80" alt="Дашборд" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1720962158813-29b66b8e23e1?w=800&q=80" alt="Дашборд" loading="lazy" />
         </div>
         <div class="work-info">
           <div class="work-title">Аналитический дашборд</div>
@@ -272,7 +272,7 @@
       </a>
       <a href="#" class="work-item reveal-card" data-testid="work-3">
         <div class="work-img">
-          <img src="https://images.unsplash.com/photo-1702479744181-2d6b58941583?w=800&q=80" alt="Промо-сайт" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1642132652860-603f4e3c19b7?w=800&q=80" alt="Промо-сайт" loading="lazy" />
         </div>
         <div class="work-info">
           <div class="work-title">Промо-сайт продукта</div>
@@ -283,12 +283,12 @@
       </a>
       <a href="#" class="work-item reveal-card" data-testid="work-4">
         <div class="work-img">
-          <img src="https://images.unsplash.com/photo-1697292866700-148d1078b17a?w=800&q=80" alt="Мобильное приложение" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1647485684426-4e4a53cb87a9?w=800&q=80" alt="SaaS интерфейс" loading="lazy" />
         </div>
         <div class="work-info">
-          <div class="work-title">Мобильное приложение</div>
+          <div class="work-title">SaaS интерфейс</div>
           <div class="work-tags">
-            <span>Vue</span><span>UI/UX</span><span>PWA</span>
+            <span>Vue</span><span>UI/UX</span><span>SaaS</span>
           </div>
         </div>
       </a>
@@ -360,6 +360,10 @@
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
+
+/* ─── force scroll to top on load ─── */
+if (history.scrollRestoration) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
 
 const isTouch = window.matchMedia('(pointer: coarse)').matches;
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

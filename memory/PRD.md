@@ -1,34 +1,22 @@
 # PRD: Портфолио веб-разработчика ktoto.dev
 
-## Исходная задача
-Улучшение готового портфолио (index.html + style.css). Многоитерационная работа.
-
 ## Стек
 HTML5, CSS3, Tailwind CDN, GSAP 3.12.5 + ScrollTrigger, Google Fonts (Syne + DM Sans)
 
-## Итерация 1 (2 апреля 2026)
-- Мобильные артефакты: tap-highlight, focus-visible, touch-action
-- GSAP оптимизация: lazy, fastScrollEnd, will-change cleanup, rAF-throttled parallax
-- Визуал: split-text hero, clipPath reveal, clip-path circle() theme flash, gradient button, cursor ring→rounded-rect
-- Производительность: prefers-reduced-motion, cursor hidden on touch, parallax off mobile, GPU layers
-- UX: scroll-hint auto-hide, avail-badge hidden on small screens
-- Убран оранжевый курсор, добавлены 2 карточки + Stack Marquee
+## Итерация 3 (2 апреля 2026)
+- **Фикс**: "Посмотреть работы" теперь прокручивает к секции `#works` (портфолио), а не к `#services`
+- **Фикс**: страница всегда стартует с самого верха (`history.scrollRestoration = 'manual'` + `scrollTo(0,0)`)
+- **Фикс**: фото портфолио заменены на скриншоты реальных сайтов/интерфейсов (Webflow, дашборд, SaaS)
 
-## Итерация 2 (2 апреля 2026)
-- **Фикс skill-tags**: убрана position:absolute, тэги в нормальном потоке, удалён Tailwind тэг
-- **SVG иконки**: все 10 карточек — inline SVG вместо emoji (rocket, zap, code, atom, settings, layout, wind, server)
-- **Интерактивные тэги**: клик на HTML/CSS/GSAP меняет иконку карточки "Лендинги" с анимацией (GSAP scale+rotation swap)
-- **Секция портфолио**: 4 работы с изображениями (Unsplash), hover-эффекты, тэги технологий
-- **Стат скорости**: изменено на "от 1 часа"
-
-## Архитектура
-- `/app/index.html` — canonical
-- `/app/style.css` — стили
-- `/app/frontend/public/` — копии для dev-сервера
+## Реализовано за все итерации
+1. Мобильные артефакты, tap-highlight, focus-visible, touch-action
+2. GSAP оптимизация (lazy, fastScrollEnd, will-change, rAF-parallax, clipPath reveal, clip-path theme flash)
+3. Split-text hero, SVG иконки (вместо emoji), интерактивные тэги на Landing карточке
+4. Секция портфолио с 4 работами, Stack Marquee
+5. Производительность (prefers-reduced-motion, cursor hidden on touch, GPU layers)
 
 ## Бэклог
-- P1: Реальные проекты в портфолио (свои скриншоты/ссылки)
-- P1: SEO meta-теги (og:image, description)
-- P2: localStorage сохранение темы
-- P2: Модальное окно с деталями проекта при клике на работу
+- P1: Реальные проекты с ссылками
+- P2: localStorage тема
+- P2: Модальное окно деталей проекта
 - P3: Форма обратной связи
