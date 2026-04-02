@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru" data-theme="dark" data-lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +15,7 @@
 <body>
 
   <div id="root" style="display:none;"></div>
-
-  <!-- theme flash -->
   <div class="theme-flash" id="themeFlash"></div>
-
-  <!-- cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
@@ -28,9 +24,30 @@
     <a href="#" class="nav-logo" data-testid="nav-logo">kt<span>.</span>dev</a>
     <div class="nav-right">
       <div class="avail-badge" id="availBadge" data-testid="avail-badge">
-        <span class="avail-dot"></span> Доступен для проектов
+        <span class="avail-dot"></span> <span data-i18n="avail">Доступен для проектов</span>
       </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" data-testid="theme-toggle">
+
+      <!-- LANG SWITCHER -->
+      <div class="lang-switcher" id="langSwitcher" data-testid="lang-switcher">
+        <button class="lang-btn" id="langBtn" data-testid="lang-btn">
+          <span id="langFlag">RU</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown" data-testid="lang-dropdown">
+          <button class="lang-option active" data-lang="ru">RU</button>
+          <button class="lang-option" data-lang="en">EN</button>
+          <button class="lang-option" data-lang="de">DE</button>
+          <button class="lang-option" data-lang="fr">FR</button>
+          <button class="lang-option" data-lang="es">ES</button>
+          <button class="lang-option" data-lang="zh">ZH</button>
+          <button class="lang-option" data-lang="ja">JA</button>
+          <button class="lang-option" data-lang="ko">KO</button>
+          <button class="lang-option" data-lang="pt">PT</button>
+          <button class="lang-option" data-lang="tr">TR</button>
+        </div>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-testid="theme-toggle">
         <div class="toggle-knob">
           <span class="icon-moon">&#127769;</span>
           <span class="icon-sun">&#9728;&#65039;</span>
@@ -43,254 +60,159 @@
   <section class="hero" id="hero">
     <div class="hero-bg-blob blob1"></div>
     <div class="hero-bg-blob blob2"></div>
-
-    <div class="hero-label" id="heroLabel">Веб-разработчик · Фронтенд</div>
-
-    <h1 class="hero-title" id="heroTitle">
-      <span class="word-wrap"><span class="word-inner">Делаю</span></span>
-      <span class="word-wrap"><span class="word-inner">сайты,</span></span><br>
-      <span class="word-wrap"><span class="word-inner">которые</span></span><br>
-      <span class="word-wrap"><span class="word-inner accent">работают</span></span><span class="word-wrap"><span class="word-inner dot">.</span></span><br>
-      <span class="word-wrap"><span class="word-inner">Точка</span></span><span class="word-wrap"><span class="word-inner dot">.</span></span>
-    </h1>
-
-    <p class="hero-sub" id="heroSub">
-      Превращаю идеи в быстрые, красивые и конверсионные продукты.
-      Без лишнего — только то, что приносит результат.
-    </p>
-
+    <div class="hero-label" id="heroLabel" data-i18n="heroLabel">Веб-разработчик · Фронтенд</div>
+    <h1 class="hero-title" id="heroTitle"></h1>
+    <p class="hero-sub" id="heroSub" data-i18n="heroSub">Превращаю идеи в быстрые, красивые и конверсионные продукты. Только то, что приносит результат.</p>
     <div class="hero-actions" id="heroActions">
       <a href="https://t.me/ktoto13000" target="_blank" class="btn-primary" data-testid="cta-discuss">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
-        </svg>
-        Обсудить проект
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        <span data-i18n="ctaDiscuss">Обсудить проект</span>
       </a>
       <a href="#works" class="btn-ghost" data-testid="cta-works">
-        Посмотреть работы
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m7 17 10-10"/><path d="M7 7h10v10"/>
-        </svg>
+        <span data-i18n="ctaWorks">Посмотреть работы</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 17 10-10"/><path d="M7 7h10v10"/></svg>
       </a>
     </div>
-
-    <div class="hero-scroll-hint" id="scrollHint">
-      <div class="scroll-line"></div>
-      <span>скролл</span>
-    </div>
+    <div class="hero-scroll-hint" id="scrollHint"><div class="scroll-line"></div><span data-i18n="scroll">скролл</span></div>
   </section>
 
   <!-- BENTO -->
   <section id="services" style="padding-top:60px;">
-    <div class="section-label">Услуги и навыки</div>
-    <h2 class="section-title">Что умею<br>и что делаю</h2>
-
+    <div class="section-label" data-i18n="secServices">Услуги и навыки</div>
+    <h2 class="section-title" data-i18n="secServicesTitle">Что умею<br>и что делаю</h2>
     <div class="bento" id="bentoGrid">
-
-      <!-- CARD: Landing (interactive icon) -->
       <div class="card card-big" data-parallax data-testid="card-landing" id="landingCard">
         <div class="card-accent-strip"></div>
-        <span class="card-icon" id="landingIcon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-          </svg>
-        </span>
-        <div class="card-title">Лендинги<br>& Промо-сайты</div>
-        <div class="card-desc" style="margin-top:12px;">
-          Конверсионные страницы с продуманной анимацией и UX.
-          Не просто «красиво» — а так, чтобы человек остался и нажал кнопку.
-        </div>
+        <span class="card-icon" id="landingIcon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
+        <div class="card-title" data-i18n="cardLanding">Лендинги<br>& Промо-сайты</div>
+        <div class="card-desc" style="margin-top:12px;" data-i18n="cardLandingDesc">Конверсионные страницы с продуманной анимацией и UX. Чтобы посетитель стал клиентом.</div>
         <div class="skill-tags">
           <span class="skill-tag skill-tag-interactive" data-skill="html" data-testid="skill-html">HTML</span>
           <span class="skill-tag skill-tag-interactive" data-skill="css" data-testid="skill-css">CSS</span>
           <span class="skill-tag skill-tag-interactive" data-skill="gsap" data-testid="skill-gsap">GSAP</span>
         </div>
       </div>
-
-      <!-- CARD: Projects count -->
       <div class="card card-stat" data-parallax data-testid="card-projects-count">
-        <div class="card-desc card-stat-label">Завершённых проектов</div>
+        <div class="card-desc card-stat-label" data-i18n="statProjects">Завершённых проектов</div>
         <div class="big-number" data-count="40">0</div>
-        <div class="card-desc">И каждый — с нуля, без шаблонов.</div>
+        <div class="card-desc" data-i18n="statProjectsDesc">Каждый — с нуля, без шаблонов.</div>
       </div>
-
-      <!-- CARD: Complex Frontend -->
       <div class="card card-orange" data-parallax data-testid="card-frontend">
-        <span class="card-icon" style="filter:none;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-        </span>
-        <div class="card-title">Сложный<br>Фронтенд</div>
-        <div class="card-desc" style="margin-top:10px;">
-          SPA, интерактивные дашборды, кастомные компоненты.
-          Там, где другие говорят «сложно» — для меня повседневная задача.
-        </div>
+        <span class="card-icon" style="filter:none;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+        <div class="card-title" data-i18n="cardFrontend">Сложный<br>Фронтенд</div>
+        <div class="card-desc" style="margin-top:10px;" data-i18n="cardFrontendDesc">SPA, интерактивные дашборды, кастомные компоненты. Любая сложность — в срок.</div>
       </div>
-
-      <!-- CARD: JavaScript -->
       <div class="card" data-parallax data-testid="card-js">
-        <span class="card-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"/>
-            <polyline points="8 6 2 12 8 18"/>
-            <line x1="14" y1="4" x2="10" y2="20"/>
-          </svg>
-        </span>
+        <span class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></span>
         <div class="card-title">JavaScript</div>
-        <div class="card-desc">Ванильный JS и возможности ES2024. Никаких лишних зависимостей там, где они не нужны.</div>
+        <div class="card-desc" data-i18n="cardJsDesc">Чистый JS и ES2024+. Минимум зависимостей, максимум производительности.</div>
       </div>
-
-      <!-- CARD: React & Vue + UI/UX -->
       <div class="card card-wide" data-parallax data-testid="card-react-vue">
         <div class="card-dual">
           <div>
-            <span class="card-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <ellipse cx="12" cy="12" rx="10" ry="4.5"/>
-                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/>
-                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/>
-              </svg>
-            </span>
+            <span class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4.5"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/></svg></span>
             <div class="card-title">React & Vue</div>
-            <div class="card-desc">Компонентный подход, состояние, хуки. Строю интерфейсы, которые не тормозят.</div>
+            <div class="card-desc" data-i18n="cardReactDesc">Компонентный подход, хуки, стейт-менеджмент. Быстрые интерфейсы без компромиссов.</div>
           </div>
           <div>
-            <span class="card-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
-                <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                <path d="M12 2v2"/>
-                <path d="M12 22v-2"/>
-                <path d="m17 20.66-1-1.73"/>
-                <path d="M11 10.27 7 3.34"/>
-                <path d="m20.66 17-1.73-1"/>
-                <path d="m3.34 7 1.73 1"/>
-                <path d="M14 12h8"/>
-                <path d="M2 12h2"/>
-                <path d="m20.66 7-1.73 1"/>
-                <path d="m3.34 17 1.73-1"/>
-                <path d="m17 3.34-1 1.73"/>
-                <path d="m11 13.73-4 6.93"/>
-              </svg>
-            </span>
-            <div class="card-title">UI/UX Дизайн</div>
-            <div class="card-desc">Figma → Код без потерь. Пиксельная точность — привычка, не слова.</div>
+            <span class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg></span>
+            <div class="card-title" data-i18n="cardUiux">UI/UX Дизайн</div>
+            <div class="card-desc" data-i18n="cardUiuxDesc">Figma в код без потерь. Пиксельная точность — стандарт работы.</div>
           </div>
         </div>
       </div>
-
-      <!-- CARD: HTML & CSS -->
       <div class="card" data-parallax data-testid="card-html-css">
-        <span class="card-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-            <line x1="3" y1="9" x2="21" y2="9"/>
-            <line x1="9" y1="21" x2="9" y2="9"/>
-          </svg>
-        </span>
+        <span class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
         <div class="card-title">HTML & CSS</div>
-        <div class="card-desc">Семантика, доступность, адаптивность. Основа, которая держит всё.</div>
+        <div class="card-desc" data-i18n="cardHtmlDesc">Семантика, доступность, адаптивность. Фундамент любого проекта.</div>
       </div>
-
-      <!-- CARD: Tailwind -->
       <div class="card" data-parallax data-testid="card-tailwind">
         <div class="card-accent-strip"></div>
-        <span class="card-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
-            <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
-            <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
-          </svg>
-        </span>
+        <span class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></span>
         <div class="card-title">Tailwind CSS</div>
-        <div class="card-desc">Utility-first без боли. Кастомные токены — результат виден сразу.</div>
+        <div class="card-desc" data-i18n="cardTwDesc">Utility-first подход. Кастомные токены — результат виден сразу.</div>
       </div>
-
-      <!-- CARD: Speed stat -->
       <div class="card card-stat" data-parallax data-testid="card-speed">
-        <div class="card-desc card-stat-label">Скорость сдачи</div>
-        <div class="big-number">от 1<br><span style="font-size:1.5rem;color:var(--muted);">часа</span></div>
-        <div class="card-desc">Без «завтра сделаю».</div>
+        <div class="card-desc card-stat-label" data-i18n="statSpeed">Скорость сдачи</div>
+        <div class="big-number">от 1<br><span style="font-size:1.5rem;color:var(--muted);" data-i18n="statSpeedUnit">часа</span></div>
+        <div class="card-desc" data-i18n="statSpeedDesc">Сроки всегда соблюдаю.</div>
       </div>
-
-      <!-- CARD: Node.js & API -->
       <div class="card" data-parallax data-testid="card-backend">
-        <span class="card-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-            <line x1="6" y1="6" x2="6.01" y2="6"/>
-            <line x1="6" y1="18" x2="6.01" y2="18"/>
-          </svg>
-        </span>
+        <span class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></span>
         <div class="card-title">Node.js & API</div>
-        <div class="card-desc">REST, WebSocket, интеграции с внешними сервисами. Фронтенд — это только верхушка.</div>
+        <div class="card-desc" data-i18n="cardNodeDesc">REST, WebSocket, интеграции. Полный цикл разработки.</div>
       </div>
-
-      <!-- CARD: Performance stat -->
       <div class="card card-stat" data-parallax data-testid="card-perf">
         <div class="card-desc card-stat-label">Lighthouse Performance</div>
         <div class="big-number" data-count="98">0</div>
-        <div class="card-desc">Скорость — не опция, а стандарт.</div>
+        <div class="card-desc" data-i18n="statPerfDesc">Скорость — стандарт, не опция.</div>
       </div>
+    </div>
+  </section>
 
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-label" data-i18n="secPricing">Стоимость</div>
+    <h2 class="section-title" data-i18n="secPricingTitle">Прозрачные<br>цены</h2>
+    <div class="pricing-grid" id="pricingGrid">
+      <div class="price-card reveal-card" data-testid="price-visit">
+        <div class="price-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+        <div class="price-name" data-i18n="priceVisit">Сайт-визитка</div>
+        <div class="price-amount"><span data-i18n="priceFrom">от</span> 500 <span class="price-currency">₽</span></div>
+        <div class="price-desc" data-i18n="priceVisitDesc">Одностраничный сайт с информацией о вас или компании</div>
+      </div>
+      <div class="price-card price-card-accent reveal-card" data-testid="price-landing">
+        <div class="price-badge" data-i18n="priceBadge">Популярное</div>
+        <div class="price-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg></div>
+        <div class="price-name" data-i18n="priceLanding">Лендинг</div>
+        <div class="price-amount"><span data-i18n="priceFrom">от</span> 1 000 <span class="price-currency">₽</span></div>
+        <div class="price-desc" data-i18n="priceLandingDesc">Конверсионная страница с анимациями и продуманным UX</div>
+      </div>
+      <div class="price-card reveal-card" data-testid="price-corp">
+        <div class="price-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="price-name" data-i18n="priceCorp">Корпоративный сайт</div>
+        <div class="price-amount"><span data-i18n="priceFrom">от</span> 1 500 <span class="price-currency">₽</span></div>
+        <div class="price-desc" data-i18n="priceCorpDesc">Полноценное представительство компании в интернете</div>
+      </div>
+      <div class="price-card reveal-card" data-testid="price-multi">
+        <div class="price-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+        <div class="price-name" data-i18n="priceMulti">Многостраничный сайт</div>
+        <div class="price-amount"><span data-i18n="priceFrom">от</span> 3 000 <span class="price-currency">₽</span></div>
+        <div class="price-desc" data-i18n="priceMultiDesc">Масштабный проект с множеством разделов и функций</div>
+      </div>
+    </div>
+
+    <div class="pricing-extras" id="pricingExtras">
+      <div class="section-label" style="margin-top:48px;" data-i18n="secExtras">Дополнительно</div>
+      <div class="extras-grid">
+        <div class="extra-item reveal-card"><span class="extra-name" data-i18n="extraAdmin">Панель управления (Админка)</span><span class="extra-price">1 000 ₽</span></div>
+        <div class="extra-item reveal-card"><span class="extra-name" data-i18n="extraContent">Разработка и написание контента</span><span class="extra-price"><span data-i18n="priceFrom">от</span> 500 ₽</span></div>
+        <div class="extra-item reveal-card"><span class="extra-name" data-i18n="extraFill">Наполнение вашим контентом</span><span class="extra-price"><span data-i18n="priceFrom">от</span> 200 ₽</span></div>
+        <div class="extra-item reveal-card"><span class="extra-name" data-i18n="extraDeploy">Хостинг и настройка домена</span><span class="extra-price"><span data-i18n="priceFrom">от</span> 300 ₽</span></div>
+      </div>
     </div>
   </section>
 
   <!-- PORTFOLIO WORKS -->
   <section id="works">
-    <div class="section-label">Портфолио</div>
-    <h2 class="section-title">Недавние<br>работы</h2>
-
+    <div class="section-label" data-i18n="secWorks">Портфолио</div>
+    <h2 class="section-title" data-i18n="secWorksTitle">Недавние<br>работы</h2>
     <div class="works-grid" id="worksGrid">
       <a href="#" class="work-item reveal-card" data-testid="work-1">
-        <div class="work-img">
-          <img src="work1.jpg" alt="Портфолио разработчика" loading="lazy" />
-        </div>
-        <div class="work-info">
-          <div class="work-title">Портфолио разработчика</div>
-          <div class="work-tags">
-            <span>React</span><span>GSAP</span><span>Анимации</span>
-          </div>
-        </div>
+        <div class="work-img"><img src="work1.jpg" alt="Portfolio" loading="lazy" /></div>
+        <div class="work-info"><div class="work-title" data-i18n="work1">Портфолио разработчика</div><div class="work-tags"><span>React</span><span>GSAP</span><span>Animations</span></div></div>
       </a>
       <a href="#" class="work-item reveal-card" data-testid="work-2">
-        <div class="work-img">
-          <img src="work3.jpg" alt="Сайт-визитка" loading="lazy" />
-        </div>
-        <div class="work-info">
-          <div class="work-title">Сайт-визитка разработчика</div>
-          <div class="work-tags">
-            <span>HTML</span><span>CSS</span><span>3D</span>
-          </div>
-        </div>
+        <div class="work-img"><img src="work3.jpg" alt="Card site" loading="lazy" /></div>
+        <div class="work-info"><div class="work-title" data-i18n="work2">Сайт-визитка разработчика</div><div class="work-tags"><span>HTML</span><span>CSS</span><span>3D</span></div></div>
       </a>
       <a href="#" class="work-item reveal-card" data-testid="work-3">
-        <div class="work-img">
-          <img src="work2.jpg" alt="Студия дизайна" loading="lazy" />
-        </div>
-        <div class="work-info">
-          <div class="work-title">Лендинг для студии</div>
-          <div class="work-tags">
-            <span>Tailwind</span><span>UI/UX</span><span>GSAP</span>
-          </div>
-        </div>
+        <div class="work-img"><img src="work2.jpg" alt="Studio" loading="lazy" /></div>
+        <div class="work-info"><div class="work-title" data-i18n="work3">Лендинг для студии</div><div class="work-tags"><span>Tailwind</span><span>UI/UX</span><span>GSAP</span></div></div>
       </a>
       <a href="#" class="work-item reveal-card" data-testid="work-4">
-        <div class="work-img">
-          <img src="work4.jpg" alt="Промо-сайт продукта" loading="lazy" />
-        </div>
-        <div class="work-info">
-          <div class="work-title">Промо-сайт продукта</div>
-          <div class="work-tags">
-            <span>Vue</span><span>Figma</span><span>SaaS</span>
-          </div>
-        </div>
+        <div class="work-img"><img src="work4.jpg" alt="Promo" loading="lazy" /></div>
+        <div class="work-info"><div class="work-title" data-i18n="work4">Промо-сайт продукта</div><div class="work-tags"><span>Vue</span><span>Figma</span><span>SaaS</span></div></div>
       </a>
     </div>
   </section>
@@ -298,339 +220,538 @@
   <!-- STACK MARQUEE -->
   <div class="stack-strip" data-testid="stack-marquee">
     <div class="stack-track" id="stackTrack">
-      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>TypeScript</span>
-      <span>React</span><span>Vue</span><span>GSAP</span><span>Tailwind</span>
-      <span>Node.js</span><span>Figma</span><span>Git</span><span>Vite</span>
-      <span>Next.js</span><span>Nuxt</span><span>REST API</span><span>WebSocket</span>
-      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>TypeScript</span>
-      <span>React</span><span>Vue</span><span>GSAP</span><span>Tailwind</span>
-      <span>Node.js</span><span>Figma</span><span>Git</span><span>Vite</span>
-      <span>Next.js</span><span>Nuxt</span><span>REST API</span><span>WebSocket</span>
+      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Vue</span><span>GSAP</span><span>Tailwind</span><span>Node.js</span><span>Figma</span><span>Git</span><span>Vite</span><span>Next.js</span><span>Nuxt</span><span>REST API</span><span>WebSocket</span>
+      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Vue</span><span>GSAP</span><span>Tailwind</span><span>Node.js</span><span>Figma</span><span>Git</span><span>Vite</span><span>Next.js</span><span>Nuxt</span><span>REST API</span><span>WebSocket</span>
     </div>
   </div>
 
   <!-- PROCESS -->
   <section id="process">
-    <div class="section-label">Как работаю</div>
-    <h2 class="section-title">Процесс,<br>без воды</h2>
-
+    <div class="section-label" data-i18n="secProcess">Как работаю</div>
+    <h2 class="section-title" data-i18n="secProcessTitle">Процесс<br>работы</h2>
     <div class="process-grid" id="processGrid">
-      <div class="process-card reveal-card">
-        <div class="process-num">01</div>
-        <div class="process-step-title">Разбираемся в задаче</div>
-        <div class="process-desc">Никаких длинных брифов на 5 страниц. Пишешь в телеграм, объясняешь идею — я задаю конкретные вопросы и понимаю суть за 15 минут.</div>
-      </div>
-      <div class="process-card reveal-card">
-        <div class="process-num">02</div>
-        <div class="process-step-title">Прототип → Дизайн</div>
-        <div class="process-desc">Показываю структуру ещё до написания кода. Лучше поправить блок на макете, чем переверстывать готовую страницу.</div>
-      </div>
-      <div class="process-card reveal-card">
-        <div class="process-num">03</div>
-        <div class="process-step-title">Разработка</div>
-        <div class="process-desc">Чистый код, адаптив с первого пикселя, оптимизация скорости. Никакого «это на потом».</div>
-      </div>
-      <div class="process-card reveal-card">
-        <div class="process-num">04</div>
-        <div class="process-step-title">Сдача и поддержка</div>
-        <div class="process-desc">Отдаю результат, объясняю что и как. Остаюсь на связи после запуска — мелкие правки не считаю за деньги.</div>
-      </div>
+      <div class="process-card reveal-card"><div class="process-num">01</div><div class="process-step-title" data-i18n="step1">Обсуждение задачи</div><div class="process-desc" data-i18n="step1Desc">Созваниваемся или переписываемся в Telegram. Уточняю детали, предлагаю решения, оцениваю сроки.</div></div>
+      <div class="process-card reveal-card"><div class="process-num">02</div><div class="process-step-title" data-i18n="step2">Прототип и дизайн</div><div class="process-desc" data-i18n="step2Desc">Показываю структуру до начала разработки. Проще скорректировать на этом этапе, чем переделывать.</div></div>
+      <div class="process-card reveal-card"><div class="process-num">03</div><div class="process-step-title" data-i18n="step3">Разработка</div><div class="process-desc" data-i18n="step3Desc">Чистый код, адаптив, оптимизация скорости. Промежуточные результаты — по запросу.</div></div>
+      <div class="process-card reveal-card"><div class="process-num">04</div><div class="process-step-title" data-i18n="step4">Сдача и поддержка</div><div class="process-desc" data-i18n="step4Desc">Передаю результат с документацией. Поддержка после запуска включена.</div></div>
     </div>
   </section>
 
   <!-- CTA -->
   <div class="cta-section reveal-card" id="ctaSection" data-testid="cta-section">
-    <h2 class="cta-title">Есть идея?<br><span>Давай обсудим.</span></h2>
-    <p class="cta-sub">Ответ в течение нескольких часов. Без «ой, я занят, подождите».</p>
+    <h2 class="cta-title" data-i18n="ctaTitle">Есть идея?<br><span>Давай обсудим.</span></h2>
+    <p class="cta-sub" data-i18n="ctaSub">Отвечаю в течение нескольких часов. Первая консультация бесплатно.</p>
     <a href="https://t.me/ktoto13000" target="_blank" class="cta-tg" data-testid="cta-telegram">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/>
-      </svg>
-      Написать @ktoto13000
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+      <span data-i18n="ctaTg">Написать @ktoto13000</span>
     </a>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-copy">© 2025 ktoto.dev — сделано с умом</span>
-    <a href="https://t.me/ktoto13000" target="_blank" class="footer-tg" data-testid="footer-telegram">
-      <span>@</span>ktoto13000
-    </a>
+    <span class="footer-copy" data-i18n="footer">© 2025 ktoto.dev</span>
+    <a href="https://t.me/ktoto13000" target="_blank" class="footer-tg" data-testid="footer-telegram"><span>@</span>ktoto13000</a>
   </footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
-
-/* ─── force scroll to top on load ─── */
 if (history.scrollRestoration) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
 
 const isTouch = window.matchMedia('(pointer: coarse)').matches;
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ─── THEME TOGGLE — clip-path circle() expanding ─── */
-const html       = document.documentElement;
-const toggleBtn  = document.getElementById('themeToggle');
-const flash      = document.getElementById('themeFlash');
-
-toggleBtn.addEventListener('click', e => {
-  const rect    = toggleBtn.getBoundingClientRect();
-  const cx      = rect.left + rect.width  / 2;
-  const cy      = rect.top  + rect.height / 2;
-  const isDark  = html.dataset.theme === 'dark';
-  const nextTheme = isDark ? 'light' : 'dark';
-
-  toggleBtn.style.setProperty('--kx', isDark ? '30px' : '0px');
-  toggleBtn.classList.add('switching');
-  setTimeout(() => toggleBtn.classList.remove('switching'), 600);
-
-  const rip = document.createElement('div');
-  rip.className = 'toggle-ripple';
-  toggleBtn.appendChild(rip);
-  setTimeout(() => rip.remove(), 650);
-
-  [0, 60, 120, 180, 240, 300].forEach(deg => {
-    const rad = deg * Math.PI / 180;
-    const dist = 28 + Math.random() * 14;
-    const spark = document.createElement('div');
-    spark.className = 'toggle-spark';
-    spark.style.setProperty('--sx', `${Math.cos(rad) * dist}px`);
-    spark.style.setProperty('--sy', `${Math.sin(rad) * dist}px`);
-    toggleBtn.appendChild(spark);
-    setTimeout(() => spark.remove(), 600);
-  });
-
-  const maxDist = Math.hypot(
-    Math.max(cx, window.innerWidth - cx),
-    Math.max(cy, window.innerHeight - cy)
-  );
-  flash.style.opacity = '1';
-  flash.style.clipPath = `circle(0% at ${cx}px ${cy}px)`;
-
-  gsap.to(flash, {
-    clipPath: `circle(${maxDist}px at ${cx}px ${cy}px)`,
-    duration: 0.6, ease: 'power2.out',
-    onComplete: () => {
-      gsap.to(flash, {
-        opacity: 0, duration: 0.3,
-        onComplete: () => { flash.style.clipPath = `circle(0% at ${cx}px ${cy}px)`; }
-      });
-    }
-  });
-
-  setTimeout(() => { html.dataset.theme = nextTheme; }, 60);
-
-  gsap.to('body', {
-    x: isDark ? 4 : -4, duration: 0.08, yoyo: true, repeat: 3,
-    ease: 'power1.inOut',
-    onComplete: () => gsap.set('body', { x: 0 })
-  });
-});
-
-/* ─── AVAILABILITY BADGE ─── */
-setTimeout(() => {
-  const badge = document.getElementById('availBadge');
-  badge.style.display = 'inline-flex';
-  gsap.from(badge, { opacity: 0, x: 24, duration: 0.55, ease: 'power2.out' });
-}, 1800);
-
-/* ─── CUSTOM CURSOR (ring only) ─── */
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-
-if (!isTouch) {
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  (function loop() {
-    rx += (mx - rx) * 0.11;
-    ry += (my - ry) * 0.11;
-    gsap.set(ring, { x: rx - 19, y: ry - 19 });
-    requestAnimationFrame(loop);
-  })();
-
-  document.querySelectorAll('a, button, .btn-primary, .cta-tg').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      gsap.to(ring, { scale: 1.5, opacity: 0.8, width: 52, height: 36, borderRadius: '12px', duration: 0.3 });
-    });
-    el.addEventListener('mouseleave', () => {
-      gsap.to(ring, { scale: 1, opacity: 0.5, width: 38, height: 38, borderRadius: '50%', duration: 0.3 });
-    });
-  });
-  document.querySelectorAll('.card, .skill-tag, .process-card, .work-item').forEach(el => {
-    el.addEventListener('mouseenter', () => { gsap.to(ring, { scale: 1.5, opacity: 0.8, duration: 0.3 }); });
-    el.addEventListener('mouseleave', () => { gsap.to(ring, { scale: 1, opacity: 0.5, duration: 0.3 }); });
-  });
-}
-
-/* ─── HERO ENTRANCE — split-text ─── */
-if (!prefersReduced) {
-  const heroTl = gsap.timeline({ delay: 0.25 });
-  heroTl.from('#heroLabel', { opacity: 0, y: 28, duration: 0.7, ease: 'power3.out' });
-  heroTl.to('#heroTitle .word-inner', { y: 0, duration: 0.8, ease: 'power4.out', stagger: 0.07 }, '-=0.3');
-  heroTl.from('#heroSub', { opacity: 0, y: 32, duration: 0.75, ease: 'power2.out' }, '-=0.4');
-  heroTl.from('#heroActions > *', { opacity: 0, y: 22, duration: 0.6, ease: 'power2.out', stagger: 0.12 }, '-=0.4');
-  heroTl.from('.hero-scroll-hint', { opacity: 0, y: 12, duration: 0.5, ease: 'power2.out' }, '-=0.2');
-}
-
-/* ─── SCROLL HINT — hide after first scroll ─── */
-ScrollTrigger.create({
-  trigger: '#hero', start: 'top -80', once: true,
-  onEnter: () => { document.getElementById('scrollHint').classList.add('hidden'); }
-});
-
-/* ─── BENTO REVEAL — clipPath bottom-up ─── */
-if (!prefersReduced) {
-  gsap.utils.toArray('#bentoGrid .card').forEach((card, i) => {
-    card.style.willChange = 'transform, opacity, clip-path';
-    gsap.from(card, {
-      scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none', lazy: false, fastScrollEnd: true },
-      opacity: 0, scale: 0.86, y: 32, clipPath: 'inset(100% 0% 0% 0%)',
-      duration: 0.72, delay: i * 0.055, ease: 'power3.out',
-      onComplete() { card.style.willChange = 'auto'; gsap.set(card, { clipPath: 'none' }); }
-    });
-  });
-}
-
-/* ─── PROCESS / CTA / WORKS REVEAL ─── */
-if (!prefersReduced) {
-  gsap.utils.toArray('.reveal-card').forEach((el, i) => {
-    el.style.willChange = 'transform, opacity, clip-path';
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none', lazy: false, fastScrollEnd: true },
-      opacity: 0, y: 52, scale: 0.94, clipPath: 'inset(100% 0% 0% 0%)',
-      duration: 0.82, delay: i * 0.09, ease: 'power3.out',
-      onComplete() { el.style.willChange = 'auto'; gsap.set(el, { clipPath: 'none' }); }
-    });
-  });
-}
-
-/* ─── SECTION TITLES & LABELS ─── */
-gsap.utils.toArray('.section-title').forEach(t => {
-  gsap.from(t, { scrollTrigger: { trigger: t, start: 'top 90%', lazy: false, fastScrollEnd: true }, opacity: 0, y: 42, duration: 0.9, ease: 'power3.out' });
-});
-gsap.utils.toArray('.section-label').forEach(l => {
-  gsap.from(l, { scrollTrigger: { trigger: l, start: 'top 92%', lazy: false, fastScrollEnd: true }, opacity: 0, x: -20, duration: 0.6, ease: 'power2.out' });
-});
-
-/* ─── COUNT-UP with scale pulse ─── */
-document.querySelectorAll('[data-count]').forEach(el => {
-  const target = parseInt(el.dataset.count, 10);
-  ScrollTrigger.create({
-    trigger: el, start: 'top 85%', once: true,
-    onEnter: () => {
-      let lastVal = 0;
-      gsap.to({ val: 0 }, {
-        val: target, duration: 1.4, ease: 'power2.out',
-        onUpdate() {
-          const cur = Math.round(this.targets()[0].val);
-          if (cur !== lastVal) {
-            el.textContent = cur + '+';
-            gsap.fromTo(el, { scale: 1.06 }, { scale: 1, duration: 0.12, ease: 'power1.out' });
-            lastVal = cur;
-          }
-        }
-      });
-    }
-  });
-});
-
-/* ─── MOUSE PARALLAX — throttled, disabled on mobile ─── */
-if (!isTouch && !prefersReduced) {
-  const parallaxCards = document.querySelectorAll('[data-parallax]');
-  let pxTicking = false, pxE = null;
-
-  document.addEventListener('mousemove', e => {
-    pxE = e;
-    if (!pxTicking) {
-      pxTicking = true;
-      requestAnimationFrame(() => {
-        if (pxE) {
-          const dx = (pxE.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-          const dy = (pxE.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-          parallaxCards.forEach((card, i) => {
-            const rect = card.getBoundingClientRect();
-            if (rect.top > window.innerHeight || rect.bottom < 0) return;
-            const d = 0.5 + (i % 3) * 0.3;
-            gsap.to(card, { x: dx * 9 * d, y: dy * 6 * d, rotateX: -dy * 2.5, rotateY: dx * 2.5, duration: 0.85, ease: 'power2.out', transformPerspective: 900 });
-          });
-        }
-        pxTicking = false;
-      });
-    }
-  });
-  document.addEventListener('mouseleave', () => {
-    parallaxCards.forEach(card => gsap.to(card, { x: 0, y: 0, rotateX: 0, rotateY: 0, duration: 1.3, ease: 'elastic.out(1,0.5)' }));
-  });
-}
-
-/* ─── MAGNETIC BUTTONS ─── */
-if (!isTouch) {
-  document.querySelectorAll('.btn-primary, .cta-tg').forEach(btn => {
-    btn.addEventListener('mousemove', e => {
-      const r = btn.getBoundingClientRect();
-      gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.3, y: (e.clientY - r.top - r.height / 2) * 0.3, duration: 0.4, ease: 'power2.out' });
-    });
-    btn.addEventListener('mouseleave', () => { gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1,0.5)' }); });
-  });
-}
-
-/* ─── NAV SHADOW ON SCROLL ─── */
-ScrollTrigger.create({
-  start: 'top -60',
-  onUpdate: s => {
-    document.getElementById('navbar').style.boxShadow = s.progress > 0 ? '0 8px 32px rgba(0,0,0,0.18)' : 'none';
+/* ═══════════════════════════════════════
+   i18n TRANSLATIONS
+   ═══════════════════════════════════════ */
+const T = {
+  ru: {
+    heroTitle: ['Делаю', 'сайты,', '\n', 'которые', '\n', '{работают}', '{.}', '\n', 'Точка', '{.}'],
+    avail:'Доступен для проектов', heroLabel:'Веб-разработчик · Фронтенд',
+    heroSub:'Превращаю идеи в быстрые, красивые и конверсионные продукты. Только то, что приносит результат.',
+    ctaDiscuss:'Обсудить проект', ctaWorks:'Посмотреть работы', scroll:'скролл',
+    secServices:'Услуги и навыки', secServicesTitle:'Что умею<br>и что делаю',
+    cardLanding:'Лендинги<br>& Промо-сайты', cardLandingDesc:'Конверсионные страницы с продуманной анимацией и UX. Чтобы посетитель стал клиентом.',
+    statProjects:'Завершённых проектов', statProjectsDesc:'Каждый — с нуля, без шаблонов.',
+    cardFrontend:'Сложный<br>Фронтенд', cardFrontendDesc:'SPA, интерактивные дашборды, кастомные компоненты. Любая сложность — в срок.',
+    cardJsDesc:'Чистый JS и ES2024+. Минимум зависимостей, максимум производительности.',
+    cardReactDesc:'Компонентный подход, хуки, стейт-менеджмент. Быстрые интерфейсы без компромиссов.',
+    cardUiux:'UI/UX Дизайн', cardUiuxDesc:'Figma в код без потерь. Пиксельная точность — стандарт работы.',
+    cardHtmlDesc:'Семантика, доступность, адаптивность. Фундамент любого проекта.',
+    cardTwDesc:'Utility-first подход. Кастомные токены — результат виден сразу.',
+    statSpeed:'Скорость сдачи', statSpeedUnit:'часа', statSpeedDesc:'Сроки всегда соблюдаю.',
+    cardNodeDesc:'REST, WebSocket, интеграции. Полный цикл разработки.',
+    statPerfDesc:'Скорость — стандарт, не опция.',
+    secPricing:'Стоимость', secPricingTitle:'Прозрачные<br>цены',
+    priceFrom:'от', priceBadge:'Популярное',
+    priceVisit:'Сайт-визитка', priceVisitDesc:'Одностраничный сайт с информацией о вас или компании',
+    priceLanding:'Лендинг', priceLandingDesc:'Конверсионная страница с анимациями и продуманным UX',
+    priceCorp:'Корпоративный сайт', priceCorpDesc:'Полноценное представительство компании в интернете',
+    priceMulti:'Многостраничный сайт', priceMultiDesc:'Масштабный проект с множеством разделов и функций',
+    secExtras:'Дополнительно',
+    extraAdmin:'Панель управления (Админка)', extraContent:'Разработка и написание контента',
+    extraFill:'Наполнение вашим контентом', extraDeploy:'Хостинг и настройка домена',
+    secWorks:'Портфолио', secWorksTitle:'Недавние<br>работы',
+    work1:'Портфолио разработчика', work2:'Сайт-визитка разработчика', work3:'Лендинг для студии', work4:'Промо-сайт продукта',
+    secProcess:'Как работаю', secProcessTitle:'Процесс<br>работы',
+    step1:'Обсуждение задачи', step1Desc:'Созваниваемся или переписываемся в Telegram. Уточняю детали, предлагаю решения, оцениваю сроки.',
+    step2:'Прототип и дизайн', step2Desc:'Показываю структуру до начала разработки. Проще скорректировать на этом этапе, чем переделывать.',
+    step3:'Разработка', step3Desc:'Чистый код, адаптив, оптимизация скорости. Промежуточные результаты — по запросу.',
+    step4:'Сдача и поддержка', step4Desc:'Передаю результат с документацией. Поддержка после запуска включена.',
+    ctaTitle:'Есть идея?<br><span>Давай обсудим.</span>', ctaSub:'Отвечаю в течение нескольких часов. Первая консультация бесплатно.',
+    ctaTg:'Написать @ktoto13000', footer:'© 2025 ktoto.dev'
+  },
+  en: {
+    heroTitle: ['I', 'build', '\n', 'websites', '\n', 'that', '{work}', '{.}', '\n', 'Period', '{.}'],
+    avail:'Available for projects', heroLabel:'Web Developer · Frontend',
+    heroSub:'Turning ideas into fast, beautiful, and high-converting products. Only what delivers results.',
+    ctaDiscuss:'Discuss a project', ctaWorks:'View works', scroll:'scroll',
+    secServices:'Services & skills', secServicesTitle:'What I do<br>and how',
+    cardLanding:'Landing pages<br>& Promo sites', cardLandingDesc:'High-converting pages with thoughtful animations and UX. Turning visitors into clients.',
+    statProjects:'Completed projects', statProjectsDesc:'Each one built from scratch.',
+    cardFrontend:'Complex<br>Frontend', cardFrontendDesc:'SPAs, dashboards, custom components. Any complexity — on time.',
+    cardJsDesc:'Clean JS and ES2024+. Minimal dependencies, maximum performance.',
+    cardReactDesc:'Component architecture, hooks, state management. Fast interfaces, no compromises.',
+    cardUiux:'UI/UX Design', cardUiuxDesc:'Figma to code with pixel precision. Quality is the standard.',
+    cardHtmlDesc:'Semantics, accessibility, responsiveness. The foundation of every project.',
+    cardTwDesc:'Utility-first approach. Custom design tokens — instant results.',
+    statSpeed:'Delivery speed', statSpeedUnit:'hour', statSpeedDesc:'Deadlines are always met.',
+    cardNodeDesc:'REST, WebSocket, integrations. Full-cycle development.',
+    statPerfDesc:'Speed is a standard, not an option.',
+    secPricing:'Pricing', secPricingTitle:'Transparent<br>prices',
+    priceFrom:'from', priceBadge:'Popular',
+    priceVisit:'Business card site', priceVisitDesc:'One-page website with info about you or your company',
+    priceLanding:'Landing page', priceLandingDesc:'Conversion-focused page with animations and UX',
+    priceCorp:'Corporate website', priceCorpDesc:'Full-scale online presence for your company',
+    priceMulti:'Multi-page website', priceMultiDesc:'Large project with multiple sections and features',
+    secExtras:'Add-ons',
+    extraAdmin:'Admin panel (CMS)', extraContent:'Content creation & copywriting',
+    extraFill:'Filling with your content', extraDeploy:'Hosting & domain setup',
+    secWorks:'Portfolio', secWorksTitle:'Recent<br>works',
+    work1:'Developer portfolio', work2:'Developer card site', work3:'Studio landing page', work4:'Product promo site',
+    secProcess:'Workflow', secProcessTitle:'How I<br>work',
+    step1:'Task discussion', step1Desc:'We chat via Telegram. I clarify details, suggest solutions, and estimate the timeline.',
+    step2:'Prototype & design', step2Desc:'I show the structure before coding. Easier to adjust at this stage.',
+    step3:'Development', step3Desc:'Clean code, responsive from the first pixel, speed optimization. Progress updates on request.',
+    step4:'Delivery & support', step4Desc:'I hand over the result with documentation. Post-launch support included.',
+    ctaTitle:'Got an idea?<br><span>Let\'s talk.</span>', ctaSub:'I reply within a few hours. First consultation is free.',
+    ctaTg:'Message @ktoto13000', footer:'© 2025 ktoto.dev'
+  },
+  de: {
+    heroTitle: ['Ich', 'baue', '\n', 'Websites,', '\n', 'die', '{funktionieren}', '{.}', '\n', 'Punkt', '{.}'],
+    avail:'Verfügbar', heroLabel:'Webentwickler · Frontend',
+    heroSub:'Ideen in schnelle, schöne und konversionsstarke Produkte verwandeln. Nur das, was Ergebnisse liefert.',
+    ctaDiscuss:'Projekt besprechen', ctaWorks:'Arbeiten ansehen', scroll:'scrollen',
+    secServices:'Leistungen & Skills', secServicesTitle:'Was ich kann<br>und mache',
+    cardLanding:'Landingpages<br>& Promo-Seiten', cardLandingDesc:'Konversionsstarke Seiten mit durchdachten Animationen und UX.',
+    statProjects:'Abgeschlossene Projekte', statProjectsDesc:'Jedes von Grund auf gebaut.',
+    cardFrontend:'Komplexes<br>Frontend', cardFrontendDesc:'SPAs, Dashboards, Custom-Komponenten. Jede Komplexität — termingerecht.',
+    cardJsDesc:'Sauberes JS und ES2024+. Minimale Abhängigkeiten, maximale Leistung.',
+    cardReactDesc:'Komponentenarchitektur, Hooks, State-Management. Schnelle Interfaces.',
+    cardUiux:'UI/UX Design', cardUiuxDesc:'Figma zu Code ohne Verluste. Pixelgenauigkeit ist Standard.',
+    cardHtmlDesc:'Semantik, Barrierefreiheit, Responsivität. Das Fundament.',
+    cardTwDesc:'Utility-first Ansatz. Custom Design-Tokens — sofortige Ergebnisse.',
+    statSpeed:'Liefergeschwindigkeit', statSpeedUnit:'Stunde', statSpeedDesc:'Termine werden eingehalten.',
+    cardNodeDesc:'REST, WebSocket, Integrationen. Full-Cycle-Entwicklung.',
+    statPerfDesc:'Geschwindigkeit ist Standard.',
+    secPricing:'Preise', secPricingTitle:'Transparente<br>Preise',
+    priceFrom:'ab', priceBadge:'Beliebt',
+    priceVisit:'Visitenkarten-Site', priceVisitDesc:'Einseiter mit Infos über Sie oder Ihr Unternehmen',
+    priceLanding:'Landingpage', priceLandingDesc:'Konversionsorientierte Seite mit Animationen und UX',
+    priceCorp:'Firmenwebsite', priceCorpDesc:'Vollständiger Online-Auftritt Ihres Unternehmens',
+    priceMulti:'Mehrseitige Website', priceMultiDesc:'Großes Projekt mit vielen Bereichen und Funktionen',
+    secExtras:'Zusätzlich',
+    extraAdmin:'Admin-Panel (CMS)', extraContent:'Content-Erstellung & Texte',
+    extraFill:'Befüllung mit Ihrem Content', extraDeploy:'Hosting & Domain-Einrichtung',
+    secWorks:'Portfolio', secWorksTitle:'Aktuelle<br>Arbeiten',
+    work1:'Entwickler-Portfolio', work2:'Entwickler-Visitenkarte', work3:'Studio-Landingpage', work4:'Produkt-Promo-Seite',
+    secProcess:'Arbeitsweise', secProcessTitle:'Wie ich<br>arbeite',
+    step1:'Aufgabe besprechen', step1Desc:'Wir telefonieren oder schreiben über Telegram. Ich kläre Details und schätze Fristen.',
+    step2:'Prototyp & Design', step2Desc:'Ich zeige die Struktur vor der Entwicklung. In dieser Phase ist es einfacher zu korrigieren.',
+    step3:'Entwicklung', step3Desc:'Sauberer Code, Responsivität, Geschwindigkeitsoptimierung.',
+    step4:'Übergabe & Support', step4Desc:'Ich übergebe das Ergebnis mit Dokumentation. Support nach Launch inklusive.',
+    ctaTitle:'Haben Sie eine Idee?<br><span>Lassen Sie uns reden.</span>', ctaSub:'Ich antworte innerhalb weniger Stunden. Erste Beratung kostenlos.',
+    ctaTg:'@ktoto13000 schreiben', footer:'© 2025 ktoto.dev'
+  },
+  fr: {
+    heroTitle: ['Je', 'crée', '\n', 'des', 'sites', '\n', 'qui', '{marchent}', '{.}', '\n', 'Point', '{.}'],
+    avail:'Disponible', heroLabel:'Développeur Web · Frontend',
+    heroSub:'Je transforme les idées en produits rapides, beaux et performants. Que du résultat.',
+    ctaDiscuss:'Discuter d\'un projet', ctaWorks:'Voir les travaux', scroll:'défiler',
+    secServices:'Services & compétences', secServicesTitle:'Ce que je fais<br>et comment',
+    cardLanding:'Landing pages<br>& Sites promo', cardLandingDesc:'Pages de conversion avec animations et UX soignés.',
+    statProjects:'Projets terminés', statProjectsDesc:'Chacun créé de zéro.',
+    cardFrontend:'Frontend<br>complexe', cardFrontendDesc:'SPA, tableaux de bord, composants sur mesure. Toute complexité — dans les délais.',
+    cardJsDesc:'JS propre et ES2024+. Minimum de dépendances, maximum de performance.',
+    cardReactDesc:'Architecture composants, hooks, gestion d\'état. Interfaces rapides.',
+    cardUiux:'Design UI/UX', cardUiuxDesc:'De Figma au code sans perte. La précision au pixel est un standard.',
+    cardHtmlDesc:'Sémantique, accessibilité, responsivité. La base de tout projet.',
+    cardTwDesc:'Approche utility-first. Design tokens — résultats immédiats.',
+    statSpeed:'Vitesse de livraison', statSpeedUnit:'heure', statSpeedDesc:'Les délais sont toujours respectés.',
+    cardNodeDesc:'REST, WebSocket, intégrations. Développement complet.',
+    statPerfDesc:'La vitesse est un standard.',
+    secPricing:'Tarifs', secPricingTitle:'Prix<br>transparents',
+    priceFrom:'à partir de', priceBadge:'Populaire',
+    priceVisit:'Site vitrine', priceVisitDesc:'Site d\'une page avec vos informations',
+    priceLanding:'Landing page', priceLandingDesc:'Page de conversion avec animations et UX',
+    priceCorp:'Site corporate', priceCorpDesc:'Présence complète de votre entreprise en ligne',
+    priceMulti:'Site multi-pages', priceMultiDesc:'Grand projet avec de nombreuses sections',
+    secExtras:'En supplément',
+    extraAdmin:'Panneau d\'administration', extraContent:'Création de contenu',
+    extraFill:'Remplissage avec votre contenu', extraDeploy:'Hébergement et configuration du domaine',
+    secWorks:'Portfolio', secWorksTitle:'Travaux<br>récents',
+    work1:'Portfolio développeur', work2:'Site carte de visite', work3:'Landing de studio', work4:'Site promo produit',
+    secProcess:'Processus', secProcessTitle:'Comment<br>je travaille',
+    step1:'Discussion du projet', step1Desc:'On échange via Telegram. Je clarifie les détails et estime les délais.',
+    step2:'Prototype et design', step2Desc:'Je montre la structure avant le code. Plus facile d\'ajuster à cette étape.',
+    step3:'Développement', step3Desc:'Code propre, responsive, optimisation de vitesse.',
+    step4:'Livraison et support', step4Desc:'Je livre avec documentation. Support post-lancement inclus.',
+    ctaTitle:'Une idée ?<br><span>Parlons-en.</span>', ctaSub:'Je réponds en quelques heures. Première consultation gratuite.',
+    ctaTg:'Écrire @ktoto13000', footer:'© 2025 ktoto.dev'
+  },
+  es: {
+    heroTitle: ['Hago', 'sitios', '\n', 'web', 'que', '\n', '{funcionan}', '{.}', '\n', 'Punto', '{.}'],
+    avail:'Disponible', heroLabel:'Desarrollador Web · Frontend',
+    heroSub:'Convierto ideas en productos rápidos, bonitos y que convierten. Solo lo que da resultados.',
+    ctaDiscuss:'Discutir proyecto', ctaWorks:'Ver trabajos', scroll:'desplazar',
+    secServices:'Servicios y habilidades', secServicesTitle:'Qué hago<br>y cómo',
+    cardLanding:'Landing pages<br>& Sitios promo', cardLandingDesc:'Páginas de conversión con animaciones y UX pensados.',
+    statProjects:'Proyectos completados', statProjectsDesc:'Cada uno desde cero.',
+    cardFrontend:'Frontend<br>complejo', cardFrontendDesc:'SPAs, dashboards, componentes custom. Cualquier complejidad — a tiempo.',
+    cardJsDesc:'JS limpio y ES2024+. Mínimas dependencias, máximo rendimiento.',
+    cardReactDesc:'Arquitectura de componentes, hooks, gestión de estado. Interfaces rápidas.',
+    cardUiux:'Diseño UI/UX', cardUiuxDesc:'De Figma a código sin pérdida. Precisión de píxel como estándar.',
+    cardHtmlDesc:'Semántica, accesibilidad, responsive. La base de todo.',
+    cardTwDesc:'Enfoque utility-first. Tokens de diseño — resultados inmediatos.',
+    statSpeed:'Velocidad de entrega', statSpeedUnit:'hora', statSpeedDesc:'Los plazos siempre se cumplen.',
+    cardNodeDesc:'REST, WebSocket, integraciones. Desarrollo completo.',
+    statPerfDesc:'La velocidad es un estándar.',
+    secPricing:'Precios', secPricingTitle:'Precios<br>transparentes',
+    priceFrom:'desde', priceBadge:'Popular',
+    priceVisit:'Sitio de tarjeta', priceVisitDesc:'Sitio de una página con info sobre ti o tu empresa',
+    priceLanding:'Landing page', priceLandingDesc:'Página de conversión con animaciones y UX',
+    priceCorp:'Sitio corporativo', priceCorpDesc:'Presencia completa de tu empresa online',
+    priceMulti:'Sitio multi-página', priceMultiDesc:'Proyecto grande con muchas secciones',
+    secExtras:'Adicional',
+    extraAdmin:'Panel de administración', extraContent:'Creación de contenido',
+    extraFill:'Llenado con tu contenido', extraDeploy:'Hosting y configuración de dominio',
+    secWorks:'Portafolio', secWorksTitle:'Trabajos<br>recientes',
+    work1:'Portfolio de desarrollador', work2:'Sitio tarjeta', work3:'Landing de estudio', work4:'Sitio promo de producto',
+    secProcess:'Proceso', secProcessTitle:'Cómo<br>trabajo',
+    step1:'Discusión del proyecto', step1Desc:'Hablamos por Telegram. Aclaro detalles y estimo plazos.',
+    step2:'Prototipo y diseño', step2Desc:'Muestro la estructura antes de codear. Más fácil ajustar aquí.',
+    step3:'Desarrollo', step3Desc:'Código limpio, responsive, optimización de velocidad.',
+    step4:'Entrega y soporte', step4Desc:'Entrego con documentación. Soporte post-lanzamiento incluido.',
+    ctaTitle:'¿Tienes una idea?<br><span>Hablemos.</span>', ctaSub:'Respondo en pocas horas. Primera consulta gratis.',
+    ctaTg:'Escribir @ktoto13000', footer:'© 2025 ktoto.dev'
+  },
+  zh: {
+    heroTitle: ['我做', '\n', '能用的', '\n', '{网站}', '{。}'],
+    avail:'可接项目', heroLabel:'网页开发者 · 前端',
+    heroSub:'将创意转化为快速、美观且高转化的产品。只做有效果的。',
+    ctaDiscuss:'讨论项目', ctaWorks:'查看作品', scroll:'滚动',
+    secServices:'服务与技能', secServicesTitle:'我的能力<br>与服务',
+    cardLanding:'着陆页<br>& 推广网站', cardLandingDesc:'高转化页面，精心设计的动画和用户体验。',
+    statProjects:'已完成项目', statProjectsDesc:'每个都从零开始。',
+    cardFrontend:'复杂<br>前端', cardFrontendDesc:'SPA、仪表盘、定制组件。任何复杂度——按时交付。',
+    cardJsDesc:'纯净JS和ES2024+。最少依赖，最大性能。',
+    cardReactDesc:'组件化、hooks、状态管理。快速界面。',
+    cardUiux:'UI/UX 设计', cardUiuxDesc:'Figma到代码零损失。像素级精确是标准。',
+    cardHtmlDesc:'语义化、无障碍、响应式。每个项目的基础。',
+    cardTwDesc:'Utility-first方法。设计令牌——即时效果。',
+    statSpeed:'交付速度', statSpeedUnit:'小时', statSpeedDesc:'始终按时交付。',
+    cardNodeDesc:'REST、WebSocket、集成。全周期开发。',
+    statPerfDesc:'速度是标准。',
+    secPricing:'价格', secPricingTitle:'透明<br>定价',
+    priceFrom:'起', priceBadge:'热门',
+    priceVisit:'名片网站', priceVisitDesc:'关于您或公司信息的单页网站',
+    priceLanding:'着陆页', priceLandingDesc:'带动画和UX的转化页面',
+    priceCorp:'企业网站', priceCorpDesc:'公司完整的在线形象',
+    priceMulti:'多页网站', priceMultiDesc:'包含多个板块的大型项目',
+    secExtras:'附加服务',
+    extraAdmin:'管理面板', extraContent:'内容创作',
+    extraFill:'填充您的内容', extraDeploy:'托管与域名配置',
+    secWorks:'作品集', secWorksTitle:'近期<br>作品',
+    work1:'开发者作品集', work2:'开发者名片网站', work3:'工作室着陆页', work4:'产品推广网站',
+    secProcess:'工作流程', secProcessTitle:'工作<br>方式',
+    step1:'需求沟通', step1Desc:'通过Telegram沟通。我会确认细节并评估时间。',
+    step2:'原型与设计', step2Desc:'开发前展示结构。这个阶段调整更容易。',
+    step3:'开发', step3Desc:'干净代码、响应式、速度优化。',
+    step4:'交付与支持', step4Desc:'交付含文档的成果。上线后支持包含在内。',
+    ctaTitle:'有想法？<br><span>聊聊吧。</span>', ctaSub:'几小时内回复。首次咨询免费。',
+    ctaTg:'联系 @ktoto13000', footer:'© 2025 ktoto.dev'
+  },
+  ja: {
+    heroTitle: ['動く', '\n', 'サイトを', '\n', '{作る}', '{。}'],
+    avail:'受注可能', heroLabel:'ウェブ開発者 · フロントエンド',
+    heroSub:'アイデアを速く、美しく、コンバージョンの高い製品に。結果を出すものだけ。',
+    ctaDiscuss:'相談する', ctaWorks:'実績を見る', scroll:'スクロール',
+    secServices:'サービス', secServicesTitle:'できること',
+    cardLanding:'LP &<br>プロモサイト', cardLandingDesc:'高CVRのページ。アニメーションとUXを丁寧に設計。',
+    statProjects:'完了プロジェクト', statProjectsDesc:'全てゼロから構築。',
+    cardFrontend:'複雑な<br>フロントエンド', cardFrontendDesc:'SPA、ダッシュボード、カスタムコンポーネント。',
+    cardJsDesc:'クリーンなJSとES2024+。最小依存、最大パフォーマンス。',
+    cardReactDesc:'コンポーネント設計、hooks、状態管理。高速UI。',
+    cardUiux:'UI/UXデザイン', cardUiuxDesc:'Figmaからコードへ。ピクセルパーフェクト。',
+    cardHtmlDesc:'セマンティクス、アクセシビリティ、レスポンシブ。',
+    cardTwDesc:'Utility-firstアプローチ。デザイントークン活用。',
+    statSpeed:'納品速度', statSpeedUnit:'時間', statSpeedDesc:'納期は必ず守ります。',
+    cardNodeDesc:'REST、WebSocket、統合。フルサイクル開発。',
+    statPerfDesc:'速度は標準。',
+    secPricing:'料金', secPricingTitle:'明確な<br>価格設定',
+    priceFrom:'〜', priceBadge:'人気',
+    priceVisit:'名刺サイト', priceVisitDesc:'あなたや会社の情報を掲載する1ページサイト',
+    priceLanding:'LP', priceLandingDesc:'アニメーションとUXのコンバージョンページ',
+    priceCorp:'コーポレートサイト', priceCorpDesc:'企業の完全なオンラインプレゼンス',
+    priceMulti:'マルチページサイト', priceMultiDesc:'多数のセクションを持つ大規模プロジェクト',
+    secExtras:'オプション',
+    extraAdmin:'管理パネル', extraContent:'コンテンツ作成',
+    extraFill:'コンテンツ入稿', extraDeploy:'ホスティング・ドメイン設定',
+    secWorks:'ポートフォリオ', secWorksTitle:'最近の<br>作品',
+    work1:'開発者ポートフォリオ', work2:'名刺サイト', work3:'スタジオLP', work4:'製品プロモ',
+    secProcess:'ワークフロー', secProcessTitle:'作業<br>プロセス',
+    step1:'ヒアリング', step1Desc:'Telegramで詳細を確認し、納期を見積もります。',
+    step2:'プロトタイプ', step2Desc:'開発前に構造を提示。この段階での修正が効率的。',
+    step3:'開発', step3Desc:'クリーンコード、レスポンシブ、速度最適化。',
+    step4:'納品・サポート', step4Desc:'ドキュメント付きで納品。ローンチ後サポート込み。',
+    ctaTitle:'アイデアがある？<br><span>話しましょう。</span>', ctaSub:'数時間以内に返信。初回相談無料。',
+    ctaTg:'@ktoto13000へ連絡', footer:'© 2025 ktoto.dev'
+  },
+  ko: {
+    heroTitle: ['작동하는', '\n', '웹사이트를', '\n', '{만듭니다}', '{.}'],
+    avail:'프로젝트 가능', heroLabel:'웹 개발자 · 프론트엔드',
+    heroSub:'아이디어를 빠르고 아름답고 전환율 높은 제품으로. 결과만 추구합니다.',
+    ctaDiscuss:'프로젝트 상담', ctaWorks:'작업물 보기', scroll:'스크롤',
+    secServices:'서비스 & 기술', secServicesTitle:'무엇을<br>하는가',
+    cardLanding:'랜딩페이지<br>& 프로모', cardLandingDesc:'전환율 높은 페이지. 애니메이션과 UX 설계.',
+    statProjects:'완료 프로젝트', statProjectsDesc:'모두 처음부터 제작.',
+    cardFrontend:'복잡한<br>프론트엔드', cardFrontendDesc:'SPA, 대시보드, 커스텀 컴포넌트.',
+    cardJsDesc:'클린 JS와 ES2024+. 최소 의존성, 최대 성능.',
+    cardReactDesc:'컴포넌트 아키텍처, hooks, 상태 관리. 빠른 인터페이스.',
+    cardUiux:'UI/UX 디자인', cardUiuxDesc:'Figma에서 코드로 손실 없이. 픽셀 정밀도.',
+    cardHtmlDesc:'시맨틱, 접근성, 반응형. 모든 프로젝트의 기반.',
+    cardTwDesc:'Utility-first 접근. 디자인 토큰 활용.',
+    statSpeed:'납품 속도', statSpeedUnit:'시간', statSpeedDesc:'납기는 항상 준수.',
+    cardNodeDesc:'REST, WebSocket, 통합. 풀사이클 개발.',
+    statPerfDesc:'속도는 기본.',
+    secPricing:'가격', secPricingTitle:'투명한<br>가격',
+    priceFrom:'~', priceBadge:'인기',
+    priceVisit:'명함 사이트', priceVisitDesc:'당신 또는 회사 정보가 담긴 원페이지 사이트',
+    priceLanding:'랜딩페이지', priceLandingDesc:'애니메이션과 UX가 포함된 전환 페이지',
+    priceCorp:'기업 웹사이트', priceCorpDesc:'회사의 완전한 온라인 존재감',
+    priceMulti:'멀티페이지', priceMultiDesc:'다수 섹션의 대규모 프로젝트',
+    secExtras:'추가 옵션',
+    extraAdmin:'관리자 패널', extraContent:'콘텐츠 제작',
+    extraFill:'콘텐츠 입력', extraDeploy:'호스팅 & 도메인 설정',
+    secWorks:'포트폴리오', secWorksTitle:'최근<br>작업',
+    work1:'개발자 포트폴리오', work2:'명함 사이트', work3:'스튜디오 랜딩', work4:'제품 프로모',
+    secProcess:'워크플로우', secProcessTitle:'작업<br>방식',
+    step1:'요구사항 논의', step1Desc:'Telegram으로 소통. 세부사항 확인 및 일정 산정.',
+    step2:'프로토타입 & 디자인', step2Desc:'개발 전 구조 제시. 이 단계에서 수정이 효율적.',
+    step3:'개발', step3Desc:'클린 코드, 반응형, 속도 최적화.',
+    step4:'납품 & 지원', step4Desc:'문서와 함께 전달. 런칭 후 지원 포함.',
+    ctaTitle:'아이디어가 있나요?<br><span>이야기해요.</span>', ctaSub:'몇 시간 내 답변. 첫 상담 무료.',
+    ctaTg:'@ktoto13000 메시지', footer:'© 2025 ktoto.dev'
+  },
+  pt: {
+    heroTitle: ['Faço', 'sites', '\n', 'que', '\n', '{funcionam}', '{.}', '\n', 'Ponto', '{.}'],
+    avail:'Disponível', heroLabel:'Desenvolvedor Web · Frontend',
+    heroSub:'Transformo ideias em produtos rápidos, bonitos e que convertem. Só o que traz resultado.',
+    ctaDiscuss:'Discutir projeto', ctaWorks:'Ver trabalhos', scroll:'rolar',
+    secServices:'Serviços & habilidades', secServicesTitle:'O que faço<br>e como',
+    cardLanding:'Landing pages<br>& Sites promo', cardLandingDesc:'Páginas de conversão com animações e UX cuidadosos.',
+    statProjects:'Projetos concluídos', statProjectsDesc:'Cada um feito do zero.',
+    cardFrontend:'Frontend<br>complexo', cardFrontendDesc:'SPAs, dashboards, componentes customizados. Qualquer complexidade — no prazo.',
+    cardJsDesc:'JS limpo e ES2024+. Mínimo de dependências, máxima performance.',
+    cardReactDesc:'Componentes, hooks, gerenciamento de estado. Interfaces rápidas.',
+    cardUiux:'Design UI/UX', cardUiuxDesc:'Do Figma ao código sem perda. Precisão de pixel é padrão.',
+    cardHtmlDesc:'Semântica, acessibilidade, responsividade. A base de tudo.',
+    cardTwDesc:'Abordagem utility-first. Design tokens — resultados imediatos.',
+    statSpeed:'Velocidade de entrega', statSpeedUnit:'hora', statSpeedDesc:'Prazos sempre cumpridos.',
+    cardNodeDesc:'REST, WebSocket, integrações. Desenvolvimento completo.',
+    statPerfDesc:'Velocidade é padrão.',
+    secPricing:'Preços', secPricingTitle:'Preços<br>transparentes',
+    priceFrom:'a partir de', priceBadge:'Popular',
+    priceVisit:'Site cartão', priceVisitDesc:'Site de uma página com informações sobre você ou empresa',
+    priceLanding:'Landing page', priceLandingDesc:'Página de conversão com animações e UX',
+    priceCorp:'Site corporativo', priceCorpDesc:'Presença completa da sua empresa online',
+    priceMulti:'Site multi-páginas', priceMultiDesc:'Projeto grande com muitas seções',
+    secExtras:'Adicionais',
+    extraAdmin:'Painel administrativo', extraContent:'Criação de conteúdo',
+    extraFill:'Preenchimento com seu conteúdo', extraDeploy:'Hospedagem e configuração de domínio',
+    secWorks:'Portfólio', secWorksTitle:'Trabalhos<br>recentes',
+    work1:'Portfólio de dev', work2:'Site cartão', work3:'Landing de estúdio', work4:'Site promo de produto',
+    secProcess:'Processo', secProcessTitle:'Como<br>trabalho',
+    step1:'Discussão do projeto', step1Desc:'Conversamos pelo Telegram. Esclareço detalhes e estimo prazos.',
+    step2:'Protótipo e design', step2Desc:'Mostro a estrutura antes do código. Mais fácil ajustar nesta fase.',
+    step3:'Desenvolvimento', step3Desc:'Código limpo, responsivo, otimização de velocidade.',
+    step4:'Entrega e suporte', step4Desc:'Entrego com documentação. Suporte pós-lançamento incluso.',
+    ctaTitle:'Tem uma ideia?<br><span>Vamos conversar.</span>', ctaSub:'Respondo em poucas horas. Primeira consulta grátis.',
+    ctaTg:'Escrever @ktoto13000', footer:'© 2025 ktoto.dev'
+  },
+  tr: {
+    heroTitle: ['Çalışan', '\n', 'web', 'siteleri', '\n', '{yapıyorum}', '{.}', '\n', 'Nokta', '{.}'],
+    avail:'Müsait', heroLabel:'Web Geliştirici · Frontend',
+    heroSub:'Fikirleri hızlı, güzel ve dönüşüm sağlayan ürünlere dönüştürüyorum.',
+    ctaDiscuss:'Proje görüşmesi', ctaWorks:'İşleri gör', scroll:'kaydır',
+    secServices:'Hizmetler & yetenekler', secServicesTitle:'Ne yapıyorum<br>ve nasıl',
+    cardLanding:'Landing page<br>& Promo siteler', cardLandingDesc:'Animasyonlu ve UX odaklı yüksek dönüşümlü sayfalar.',
+    statProjects:'Tamamlanan projeler', statProjectsDesc:'Her biri sıfırdan.',
+    cardFrontend:'Karmaşık<br>Frontend', cardFrontendDesc:'SPA, dashboard, özel bileşenler. Her karmaşıklık — zamanında.',
+    cardJsDesc:'Temiz JS ve ES2024+. Minimum bağımlılık, maksimum performans.',
+    cardReactDesc:'Bileşen mimarisi, hooks, durum yönetimi. Hızlı arayüzler.',
+    cardUiux:'UI/UX Tasarım', cardUiuxDesc:'Figma\'dan koda kayıpsız. Piksel hassasiyeti standart.',
+    cardHtmlDesc:'Semantik, erişilebilirlik, duyarlılık. Her projenin temeli.',
+    cardTwDesc:'Utility-first yaklaşım. Tasarım tokenleri — anında sonuç.',
+    statSpeed:'Teslimat hızı', statSpeedUnit:'saat', statSpeedDesc:'Süreler her zaman tutulur.',
+    cardNodeDesc:'REST, WebSocket, entegrasyonlar. Tam döngü geliştirme.',
+    statPerfDesc:'Hız bir standarttır.',
+    secPricing:'Fiyatlar', secPricingTitle:'Şeffaf<br>fiyatlar',
+    priceFrom:'~', priceBadge:'Popüler',
+    priceVisit:'Kartvizit site', priceVisitDesc:'Siz veya şirketiniz hakkında bilgi içeren tek sayfalık site',
+    priceLanding:'Landing page', priceLandingDesc:'Animasyonlu ve UX odaklı dönüşüm sayfası',
+    priceCorp:'Kurumsal site', priceCorpDesc:'Şirketinizin eksiksiz çevrimiçi varlığı',
+    priceMulti:'Çok sayfalı site', priceMultiDesc:'Birçok bölüm içeren büyük proje',
+    secExtras:'Ek hizmetler',
+    extraAdmin:'Yönetim paneli', extraContent:'İçerik oluşturma',
+    extraFill:'İçerik doldurma', extraDeploy:'Hosting ve domain kurulumu',
+    secWorks:'Portföy', secWorksTitle:'Son<br>çalışmalar',
+    work1:'Geliştirici portföyü', work2:'Kartvizit site', work3:'Stüdyo landing', work4:'Ürün promo sitesi',
+    secProcess:'Süreç', secProcessTitle:'Nasıl<br>çalışıyorum',
+    step1:'Proje görüşmesi', step1Desc:'Telegram üzerinden iletişime geçiyoruz. Detayları netleştirip süre tahmin ediyorum.',
+    step2:'Prototip ve tasarım', step2Desc:'Kodlamadan önce yapıyı gösteriyorum. Bu aşamada düzeltmek daha kolay.',
+    step3:'Geliştirme', step3Desc:'Temiz kod, duyarlı tasarım, hız optimizasyonu.',
+    step4:'Teslimat ve destek', step4Desc:'Dokümantasyonla birlikte teslim. Lansman sonrası destek dahil.',
+    ctaTitle:'Bir fikrin mi var?<br><span>Konuşalım.</span>', ctaSub:'Birkaç saat içinde yanıt. İlk danışma ücretsiz.',
+    ctaTg:'@ktoto13000 yaz', footer:'© 2025 ktoto.dev'
   }
-});
-
-/* ─── FOOTER REVEAL ─── */
-gsap.from('footer > *', {
-  scrollTrigger: { trigger: 'footer', start: 'top 95%', lazy: false, fastScrollEnd: true },
-  opacity: 0, y: 20, duration: 0.6, stagger: 0.15, ease: 'power2.out'
-});
-
-/* ─── INTERACTIVE SKILL TAGS (Landing card icon swap) ─── */
-const landingIcon = document.getElementById('landingIcon');
-const defaultIconSVG = landingIcon.innerHTML;
-
-const skillIcons = {
-  html: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-  css: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>`,
-  gsap: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16.5 12"/><path d="M6 18 L18 18" stroke-dasharray="2 2"/></svg>`
 };
 
-let activeSkill = null;
+/* ─── BUILD HERO TITLE ─── */
+function buildHeroTitle(lang) {
+  const words = T[lang].heroTitle;
+  const title = document.getElementById('heroTitle');
+  title.innerHTML = '';
+  words.forEach(w => {
+    if (w === '\n') { title.appendChild(document.createElement('br')); return; }
+    const isAccent = w.startsWith('{') && w.endsWith('}');
+    const text = isAccent ? w.slice(1, -1) : w;
+    const wrap = document.createElement('span');
+    wrap.className = 'word-wrap';
+    const inner = document.createElement('span');
+    inner.className = 'word-inner' + (isAccent ? (text === '.' ? ' dot' : ' accent') : '');
+    inner.textContent = text;
+    wrap.appendChild(inner);
+    title.appendChild(wrap);
+    title.appendChild(document.createTextNode(' '));
+  });
+}
 
-document.querySelectorAll('.skill-tag-interactive').forEach(tag => {
-  tag.style.cursor = 'pointer';
-  tag.addEventListener('click', () => {
-    const skill = tag.dataset.skill;
-
-    /* toggle off if same */
-    if (activeSkill === skill) {
-      activeSkill = null;
-      document.querySelectorAll('.skill-tag-interactive').forEach(t => t.classList.remove('skill-tag-active'));
-      gsap.to(landingIcon, {
-        scale: 0.6, opacity: 0, duration: 0.2,
-        onComplete: () => {
-          landingIcon.innerHTML = defaultIconSVG;
-          gsap.to(landingIcon, { scale: 1, opacity: 1, rotation: 0, duration: 0.35, ease: 'back.out(2)' });
-        }
-      });
-      return;
+/* ─── APPLY LANGUAGE ─── */
+function setLang(lang) {
+  const dict = T[lang];
+  if (!dict) return;
+  document.documentElement.setAttribute('data-lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) {
+      if (key === 'ctaTitle') { el.innerHTML = dict[key]; }
+      else if (key === 'secServicesTitle' || key === 'secPricingTitle' || key === 'secWorksTitle' || key === 'secProcessTitle') { el.innerHTML = dict[key]; }
+      else { el.textContent = dict[key]; }
     }
+  });
+  buildHeroTitle(lang);
+  /* animate words in */
+  gsap.fromTo('#heroTitle .word-inner', { y: '110%' }, { y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.05 });
+  /* update lang button */
+  document.getElementById('langFlag').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+}
 
-    activeSkill = skill;
-    document.querySelectorAll('.skill-tag-interactive').forEach(t => t.classList.remove('skill-tag-active'));
-    tag.classList.add('skill-tag-active');
-
-    gsap.to(landingIcon, {
-      scale: 0.6, opacity: 0, rotation: -15, duration: 0.2,
-      onComplete: () => {
-        landingIcon.innerHTML = skillIcons[skill];
-        gsap.to(landingIcon, { scale: 1, opacity: 1, rotation: 0, duration: 0.35, ease: 'back.out(2)' });
-      }
-    });
+/* ─── LANG SWITCHER ─── */
+const langBtn = document.getElementById('langBtn');
+const langDrop = document.getElementById('langDropdown');
+langBtn.addEventListener('click', () => langDrop.classList.toggle('open'));
+document.addEventListener('click', e => { if (!e.target.closest('.lang-switcher')) langDrop.classList.remove('open'); });
+document.querySelectorAll('.lang-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    setLang(opt.dataset.lang);
+    langDrop.classList.remove('open');
   });
 });
+
+/* ─── INIT ─── */
+buildHeroTitle('ru');
+
+/* ─── THEME TOGGLE ─── */
+const html = document.documentElement;
+const toggleBtn = document.getElementById('themeToggle');
+const flash = document.getElementById('themeFlash');
+toggleBtn.addEventListener('click', e => {
+  const rect=toggleBtn.getBoundingClientRect(), cx=rect.left+rect.width/2, cy=rect.top+rect.height/2;
+  const isDark=html.dataset.theme==='dark', next=isDark?'light':'dark';
+  toggleBtn.style.setProperty('--kx',isDark?'30px':'0px');
+  toggleBtn.classList.add('switching'); setTimeout(()=>toggleBtn.classList.remove('switching'),600);
+  const rip=document.createElement('div'); rip.className='toggle-ripple'; toggleBtn.appendChild(rip); setTimeout(()=>rip.remove(),650);
+  [0,60,120,180,240,300].forEach(deg=>{const rad=deg*Math.PI/180,dist=28+Math.random()*14,spark=document.createElement('div');spark.className='toggle-spark';spark.style.setProperty('--sx',`${Math.cos(rad)*dist}px`);spark.style.setProperty('--sy',`${Math.sin(rad)*dist}px`);toggleBtn.appendChild(spark);setTimeout(()=>spark.remove(),600);});
+  const maxDist=Math.hypot(Math.max(cx,window.innerWidth-cx),Math.max(cy,window.innerHeight-cy));
+  flash.style.opacity='1'; flash.style.clipPath=`circle(0% at ${cx}px ${cy}px)`;
+  gsap.to(flash,{clipPath:`circle(${maxDist}px at ${cx}px ${cy}px)`,duration:0.6,ease:'power2.out',onComplete:()=>{gsap.to(flash,{opacity:0,duration:0.3,onComplete:()=>{flash.style.clipPath=`circle(0% at ${cx}px ${cy}px)`;}});}});
+  setTimeout(()=>{html.dataset.theme=next;},60);
+  gsap.to('body',{x:isDark?4:-4,duration:0.08,yoyo:true,repeat:3,ease:'power1.inOut',onComplete:()=>gsap.set('body',{x:0})});
+});
+
+/* ─── AVAIL BADGE ─── */
+setTimeout(()=>{const b=document.getElementById('availBadge');b.style.display='inline-flex';gsap.from(b,{opacity:0,x:24,duration:0.55,ease:'power2.out'});},1800);
+
+/* ─── CURSOR ─── */
+const ring=document.getElementById('cursorRing'); let mx=0,my=0,rx2=0,ry2=0;
+if(!isTouch){
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function loop(){rx2+=(mx-rx2)*0.11;ry2+=(my-ry2)*0.11;gsap.set(ring,{x:rx2-19,y:ry2-19});requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button,.btn-primary,.cta-tg').forEach(el=>{el.addEventListener('mouseenter',()=>{gsap.to(ring,{scale:1.5,opacity:0.8,width:52,height:36,borderRadius:'12px',duration:0.3});});el.addEventListener('mouseleave',()=>{gsap.to(ring,{scale:1,opacity:0.5,width:38,height:38,borderRadius:'50%',duration:0.3});});});
+  document.querySelectorAll('.card,.skill-tag,.process-card,.work-item,.price-card').forEach(el=>{el.addEventListener('mouseenter',()=>{gsap.to(ring,{scale:1.5,opacity:0.8,duration:0.3});});el.addEventListener('mouseleave',()=>{gsap.to(ring,{scale:1,opacity:0.5,duration:0.3});});});
+}
+
+/* ─── HERO ENTRANCE ─── */
+if(!prefersReduced){
+  const heroTl=gsap.timeline({delay:0.25});
+  heroTl.from('#heroLabel',{opacity:0,y:28,duration:0.7,ease:'power3.out'});
+  heroTl.to('#heroTitle .word-inner',{y:0,duration:0.8,ease:'power4.out',stagger:0.07},'-=0.3');
+  heroTl.from('#heroSub',{opacity:0,y:32,duration:0.75,ease:'power2.out'},'-=0.4');
+  heroTl.from('#heroActions > *',{opacity:0,y:22,duration:0.6,ease:'power2.out',stagger:0.12},'-=0.4');
+  heroTl.from('.hero-scroll-hint',{opacity:0,y:12,duration:0.5,ease:'power2.out'},'-=0.2');
+}
+
+/* ─── SCROLL HINT ─── */
+ScrollTrigger.create({trigger:'#hero',start:'top -80',once:true,onEnter:()=>{document.getElementById('scrollHint').classList.add('hidden');}});
+
+/* ─── BENTO REVEAL ─── */
+if(!prefersReduced){gsap.utils.toArray('#bentoGrid .card').forEach((card,i)=>{card.style.willChange='transform,opacity,clip-path';gsap.from(card,{scrollTrigger:{trigger:card,start:'top 88%',toggleActions:'play none none none',lazy:false,fastScrollEnd:true},opacity:0,scale:0.86,y:32,clipPath:'inset(100% 0% 0% 0%)',duration:0.72,delay:i*0.055,ease:'power3.out',onComplete(){card.style.willChange='auto';gsap.set(card,{clipPath:'none'});}});});}
+
+/* ─── REVEAL CARDS ─── */
+if(!prefersReduced){gsap.utils.toArray('.reveal-card').forEach((el,i)=>{el.style.willChange='transform,opacity,clip-path';gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none',lazy:false,fastScrollEnd:true},opacity:0,y:52,scale:0.94,clipPath:'inset(100% 0% 0% 0%)',duration:0.82,delay:i*0.09,ease:'power3.out',onComplete(){el.style.willChange='auto';gsap.set(el,{clipPath:'none'});}});});}
+
+gsap.utils.toArray('.section-title').forEach(t=>{gsap.from(t,{scrollTrigger:{trigger:t,start:'top 90%',lazy:false,fastScrollEnd:true},opacity:0,y:42,duration:0.9,ease:'power3.out'});});
+gsap.utils.toArray('.section-label').forEach(l=>{gsap.from(l,{scrollTrigger:{trigger:l,start:'top 92%',lazy:false,fastScrollEnd:true},opacity:0,x:-20,duration:0.6,ease:'power2.out'});});
+
+/* ─── COUNT-UP ─── */
+document.querySelectorAll('[data-count]').forEach(el=>{const target=parseInt(el.dataset.count,10);ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>{let last=0;gsap.to({val:0},{val:target,duration:1.4,ease:'power2.out',onUpdate(){const c=Math.round(this.targets()[0].val);if(c!==last){el.textContent=c+'+';gsap.fromTo(el,{scale:1.06},{scale:1,duration:0.12,ease:'power1.out'});last=c;}}});}});});
+
+/* ─── PARALLAX ─── */
+if(!isTouch&&!prefersReduced){const pc=document.querySelectorAll('[data-parallax]');let tick=false,ev=null;document.addEventListener('mousemove',e=>{ev=e;if(!tick){tick=true;requestAnimationFrame(()=>{if(ev){const dx=(ev.clientX-window.innerWidth/2)/(window.innerWidth/2),dy=(ev.clientY-window.innerHeight/2)/(window.innerHeight/2);pc.forEach((c,i)=>{const r=c.getBoundingClientRect();if(r.top>window.innerHeight||r.bottom<0)return;const d=0.5+(i%3)*0.3;gsap.to(c,{x:dx*9*d,y:dy*6*d,rotateX:-dy*2.5,rotateY:dx*2.5,duration:0.85,ease:'power2.out',transformPerspective:900});});}tick=false;});}});document.addEventListener('mouseleave',()=>{pc.forEach(c=>gsap.to(c,{x:0,y:0,rotateX:0,rotateY:0,duration:1.3,ease:'elastic.out(1,0.5)'}));});}
+
+/* ─── MAGNETIC ─── */
+if(!isTouch){document.querySelectorAll('.btn-primary,.cta-tg').forEach(btn=>{btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*0.3,y:(e.clientY-r.top-r.height/2)*0.3,duration:0.4,ease:'power2.out'});});btn.addEventListener('mouseleave',()=>{gsap.to(btn,{x:0,y:0,duration:0.7,ease:'elastic.out(1,0.5)'});});});}
+
+ScrollTrigger.create({start:'top -60',onUpdate:s=>{document.getElementById('navbar').style.boxShadow=s.progress>0?'0 8px 32px rgba(0,0,0,0.18)':'none';}});
+gsap.from('footer > *',{scrollTrigger:{trigger:'footer',start:'top 95%',lazy:false,fastScrollEnd:true},opacity:0,y:20,duration:0.6,stagger:0.15,ease:'power2.out'});
+
+/* ─── INTERACTIVE TAGS ─── */
+const landingIcon=document.getElementById('landingIcon'), defIcon=landingIcon.innerHTML;
+const skillIcons={html:`<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,css:`<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>`,gsap:`<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16.5 12"/><path d="M6 18 L18 18" stroke-dasharray="2 2"/></svg>`};
+let activeSk=null;
+document.querySelectorAll('.skill-tag-interactive').forEach(tag=>{tag.style.cursor='pointer';tag.addEventListener('click',()=>{const sk=tag.dataset.skill;if(activeSk===sk){activeSk=null;document.querySelectorAll('.skill-tag-interactive').forEach(t=>t.classList.remove('skill-tag-active'));gsap.to(landingIcon,{scale:0.6,opacity:0,duration:0.2,onComplete:()=>{landingIcon.innerHTML=defIcon;gsap.to(landingIcon,{scale:1,opacity:1,rotation:0,duration:0.35,ease:'back.out(2)'});}});return;}activeSk=sk;document.querySelectorAll('.skill-tag-interactive').forEach(t=>t.classList.remove('skill-tag-active'));tag.classList.add('skill-tag-active');gsap.to(landingIcon,{scale:0.6,opacity:0,rotation:-15,duration:0.2,onComplete:()=>{landingIcon.innerHTML=skillIcons[sk];gsap.to(landingIcon,{scale:1,opacity:1,rotation:0,duration:0.35,ease:'back.out(2)'});}});});});
 </script>
 </body>
 </html>

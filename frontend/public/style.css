@@ -576,6 +576,114 @@ section{padding:100px 40px;}
 .process-desc{font-size:.88rem;color:var(--muted);line-height:1.55;}
 
 /* ════════════════════════════════════════════════
+   LANG SWITCHER
+   ════════════════════════════════════════════════ */
+.lang-switcher{position:relative;}
+.lang-btn{
+  display:flex;align-items:center;gap:5px;
+  background:var(--surface2);color:var(--text);
+  border:1.5px solid var(--border);border-radius:100px;
+  padding:7px 14px;font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;
+  letter-spacing:.04em;cursor:pointer;
+  transition:border-color .25s,background .25s;
+}
+.lang-btn:hover{border-color:rgba(255,90,20,.4);}
+.lang-btn svg{opacity:.5;transition:transform .3s;}
+.lang-dropdown.open + .lang-btn svg,
+.lang-switcher:has(.lang-dropdown.open) .lang-btn svg{transform:rotate(180deg);}
+.lang-dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:6px;min-width:72px;
+  display:none;flex-direction:column;gap:2px;
+  box-shadow:0 16px 48px rgba(0,0,0,.25);
+  z-index:200;
+}
+.lang-dropdown.open{display:flex;}
+.lang-option{
+  background:transparent;border:none;color:var(--text);
+  font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;
+  padding:8px 14px;border-radius:10px;cursor:pointer;text-align:center;
+  transition:background .2s,color .2s;
+}
+.lang-option:hover{background:var(--surface2);}
+.lang-option.active{background:var(--accent);color:#fff;}
+
+/* ════════════════════════════════════════════════
+   PRICING
+   ════════════════════════════════════════════════ */
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.price-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--card-r);padding:32px 24px;
+  position:relative;overflow:hidden;
+  transition:border-color .35s,transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.price-card:hover{
+  border-color:rgba(255,90,20,.3);
+  transform:translateY(-4px);
+  box-shadow:0 20px 56px rgba(255,90,20,.1),0 8px 24px rgba(0,0,0,.14);
+}
+.price-card-accent{
+  background:var(--accent);border-color:transparent!important;
+  color:#fff;
+}
+.price-card-accent:hover{
+  background:#ff6b28;
+  box-shadow:0 24px 64px rgba(255,90,20,.35)!important;
+}
+.price-card-accent .price-name,
+.price-card-accent .price-amount,
+.price-card-accent .price-desc{color:#fff!important;}
+.price-card-accent .price-currency{color:rgba(255,255,255,.7)!important;}
+
+.price-badge{
+  position:absolute;top:16px;right:16px;
+  background:rgba(255,255,255,.2);color:#fff;
+  font-size:.65rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:4px 10px;border-radius:100px;
+}
+.price-icon{margin-bottom:20px;}
+.price-name{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:1.1rem;color:var(--text);margin-bottom:12px;
+}
+.price-amount{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(1.8rem,3vw,2.4rem);line-height:1;
+  color:var(--text);margin-bottom:16px;
+}
+.price-currency{
+  font-size:.7em;color:var(--muted);font-weight:500;
+}
+.price-desc{
+  font-size:.85rem;color:var(--muted);line-height:1.5;
+}
+
+/* extras */
+.extras-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;margin-top:20px;
+}
+.extra-item{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:18px 24px;
+  transition:border-color .3s;
+}
+.extra-item:hover{border-color:rgba(255,90,20,.25);}
+.extra-name{font-size:.9rem;color:var(--text);}
+.extra-price{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.95rem;color:var(--accent);white-space:nowrap;
+}
+
+/* ════════════════════════════════════════════════
    PORTFOLIO WORKS
    ════════════════════════════════════════════════ */
 .works-grid{
@@ -741,6 +849,7 @@ footer{
    ════════════════════════════════════════════════ */
 @media(max-width:1100px){
   .bento{grid-template-columns:repeat(2,1fr);}
+  .pricing-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:640px){
   nav    {padding:14px 20px;}
@@ -751,4 +860,7 @@ footer{
   .card-wide,.card-tall,.card-big{grid-column:span 1;grid-row:span 1;}
   .cta-section{padding:52px 28px;margin:0 16px 60px;}
   .works-grid{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .extras-grid{grid-template-columns:1fr;}
+  .extra-item{flex-direction:column;align-items:flex-start;gap:8px;}
 }
