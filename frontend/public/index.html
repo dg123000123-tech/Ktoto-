@@ -740,7 +740,6 @@ toggleBtn.addEventListener('click', e => {
   flash.style.opacity='1'; flash.style.clipPath=`circle(0% at ${cx}px ${cy}px)`;
   gsap.to(flash,{clipPath:`circle(${maxDist}px at ${cx}px ${cy}px)`,duration:0.6,ease:'power2.out',onComplete:()=>{gsap.to(flash,{opacity:0,duration:0.3,onComplete:()=>{flash.style.clipPath=`circle(0% at ${cx}px ${cy}px)`;}});}});
   setTimeout(()=>{html.dataset.theme=next;},60);
-  gsap.to('body',{x:isDark?4:-4,duration:0.08,yoyo:true,repeat:3,ease:'power1.inOut',onComplete:()=>gsap.set('body',{x:0})});
 });
 
 /* ─── AVAIL BADGE ─── */
