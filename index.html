@@ -675,28 +675,27 @@ function setLang(lang) {
   updatePrices(lang);
 }
 
-/* ─── CURRENCY CONVERSION ─── */
+/* ─── CURRENCY: only RUB and USD ─── */
 const currencies = {
-  ru: { symbol: '₽', rate: 1, after: true },
-  en: { symbol: '$', rate: 0.011, after: false },
-  de: { symbol: '€', rate: 0.010, after: true },
-  fr: { symbol: '€', rate: 0.010, after: true },
-  es: { symbol: '€', rate: 0.010, after: true },
-  pt: { symbol: 'R$', rate: 0.065, after: false },
-  zh: { symbol: '¥', rate: 0.08, after: false },
-  ja: { symbol: '¥', rate: 1.7, after: false },
-  ko: { symbol: '₩', rate: 15, after: false },
-  tr: { symbol: '₺', rate: 0.39, after: false }
+  ru: { symbol: '₽', rate: 1, after: true }
 };
+const usdRate = 0.011;
 
 function formatPrice(rub, lang) {
-  const c = currencies[lang] || currencies.ru;
-  let val = Math.round(rub * c.rate);
-  /* round nicely */
-  if (val >= 100) val = Math.round(val / 10) * 10;
-  if (val >= 1000) val = Math.round(val / 100) * 100;
-  const num = val.toLocaleString('ru-RU');
-  return c.after ? `${num} ${c.symbol}` : `${c.symbol}${num}`;
+  if (lang === 'ru') {
+    const num = rub.toLocaleString('ru-RU');
+    return `${num} ₽`;
+  }
+  let usd = Math.round(rub * usdRate);
+  if (usd < 1) usd = 1;
+  return `$${usd}`;
+}
+
+function formatPriceRubUsd(rub, lang) {
+  if (lang === 'ru') return `${rub.toLocaleString('ru-RU')} ₽`;
+  let usd = Math.round(rub * usdRate);
+  if (usd < 1) usd = 1;
+  return `${rub.toLocaleString('ru-RU')} ₽ / $${usd}`;
 }
 
 function updatePrices(lang) {
@@ -705,8 +704,8 @@ function updatePrices(lang) {
   document.querySelectorAll('[data-price]').forEach(el => {
     const rub = parseInt(el.dataset.price, 10);
     const noPrefix = el.dataset.noprefix === '1';
-    const converted = formatPrice(rub, lang);
-    el.innerHTML = noPrefix ? converted : `${fromText} ${converted}`;
+    const price = lang === 'ru' ? formatPrice(rub, lang) : formatPriceRubUsd(rub, lang);
+    el.innerHTML = noPrefix ? price : `${fromText} ${price}`;
   });
 }
 
